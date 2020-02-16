@@ -1,0 +1,42 @@
+pip install virtualenv
+py -m pip install --upgrade pip
+py -m virtualenv SPMITAutomation
+.\Scripts\activate
+where python
+	C:\Sachin\Projects\SPMITAutomation\Scripts\python.exe
+	C:\Users\Administrator\AppData\Local\Programs\Python\Python38\python.exe
+
+pip freeze
+pip install django
+Scripts\django-admin.exe startproject SPMIT
+
+
+
+pip install pymssql
+	pip install Cython
+	
+	Microsoft Visual C++ 14.0
+		https://visualstudio.microsoft.com/visual-cpp-build-tools/
+		https://visualstudio.microsoft.com/downloads/
+		
+			https://stackoverflow.com/questions/2817869/error-unable-to-find-vcvarsall-bat/10558328#10558328
+			error: Unable to find vcvarsall.bat
+				Execute the following command based on the version of Visual Studio installed:
+				Visual Studio 2010 (VS10): SET VS90COMNTOOLS=%VS100COMNTOOLS%
+				Visual Studio 2012 (VS11): SET VS90COMNTOOLS=%VS110COMNTOOLS%
+				Visual Studio 2013 (VS12): SET VS90COMNTOOLS=%VS120COMNTOOLS%
+				Visual Studio 2015 (VS14): SET VS90COMNTOOLS=%VS140COMNTOOLS%
+		
+					Windows x64 - fatal error C1083: Cannot open include file: 'basetsd.h': No such file or directory	
+						https://stackoverflow.com/questions/48541801/microsoft-visual-c-14-0-is-required-get-it-with-microsoft-visual-c-build-t
+						windows-10-sdk
+						https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk/
+					
+							_mssql.c(599): fatal error C1083: Cannot open include file: 'sqlfront.h': No such file or directory
+								https://www.lfd.uci.edu/~gohlke/pythonlibs/#pymssql
+								"C:\Sachin\Projects\SPMITAutomation\SPMIT\vendor\pymssql-2.1.4-cp38-cp38-win_amd64.whl"
+
+							https://pypi.org/project/sqlHelper/#files
+							https://files.pythonhosted.org/packages/e9/9c/e9ca328b998bcab342c1f4c4cf59b67cf1ba67f29e442c80b55899dfb217/sqlHelper-1.1.9-py3-none-any.whl
+
+https://readthedocs.org/projects/pymssql/downloads/pdf/latest/
