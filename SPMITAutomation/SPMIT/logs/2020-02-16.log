@@ -1,0 +1,7 @@
+2020-02-16 09:07:44 DEBUG    Main_Start.Py 0||SachinPatil||Application Process Cycle
+2020-02-16 09:35:15 DEBUG    Main_Start.Py 0||SachinPatil||Application Process Cycle
+2020-02-16 09:35:15 DEBUG    Infrastructure_File_Managment.Py 0||SachinPatil||Method invoked with input parameter - Test Data
+2020-02-16 09:35:15 DEBUG    Infrastructure_File_Managment.Py 0||SachinPatil||Method modified input parameter - Input String Modified - {0}
+2020-02-16 09:38:09 DEBUG    Main_Start.Py 0||SachinPatil||Application Process Cycle
+2020-02-16 09:38:09 DEBUG    Infrastructure_File_Managment.Py 0||SachinPatil||Method invoked with input parameter - Test Data
+2020-02-16 09:38:09 DEBUG    Infrastructure_File_Managment.Py 0||SachinPatil||Method modified input parameter - Input String Modified - Test Data
