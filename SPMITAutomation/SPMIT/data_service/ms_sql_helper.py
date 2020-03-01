@@ -1,7 +1,6 @@
 import logging
 import sys
 import os.path
-import infrastructure
 import json
 from datetime import date
 import time
@@ -18,7 +17,7 @@ db_tbale_pog = 'Log'
 log = logging.getLogger('DataService_SQL_Helper.Py')
 log.setLevel(log_error_level)
 
-class DBServer:
+class Class_Ms_Sql_Helper:
     def __init__(self):
         self.DB_CONFIG = {
             'name': 'SPMIT',
