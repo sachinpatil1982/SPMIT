@@ -27,11 +27,10 @@ ALTER PROCEDURE sp_insert_server_logs(
 ) 
 AS
 BEGIN
+SET NOCOUNT ON;
+SET XACT_ABORT ON;
 	BEGIN TRY
-		SET NOCOUNT ON;
-		SET XACT_ABORT ON;
 		BEGIN TRANSACTION 
-
 			IF @ServerId IS NULL OR @ServerId <=0 
 				THROW 50001, 'ServerId is Mandatory Paramter', 1;
 
@@ -68,9 +67,6 @@ BEGIN
 			DROP TABLE #tmp
 
 			SELECT  @IsTransactionSuccessfull=1, @TransactionMessage = 'Successful'
-	
-		  --  IF @@ERROR <> 0	OR @@TRANCOUNT > 0
-				--ROLLBACK;
 
 		COMMIT;
 

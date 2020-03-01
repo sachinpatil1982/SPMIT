@@ -28,6 +28,7 @@ class Class_Solution_Management:
             log.debug('{0}||{1}||Class_Solution_Management - fetch_server_logs_in_db - Started' .format(self.server_id, self.user_id))
             self.fetch_server_logs()
             self.save_server_logs_db()
+            self.get_server_logs_db()
             #print (self.server_logs)
             log.debug('{0}||{1}||Class_Solution_Management - fetch_server_logs_in_db - Completed' .format(self.server_id, self.user_id))
         except Exception as e:
@@ -53,43 +54,22 @@ class Class_Solution_Management:
     def save_server_logs_db(self):
         try:
             log.debug('{0}||{1}||Class_Solution_Management - fetchsave_server_logs_db_server_logs - Started' .format(self.server_id, self.user_id))
-
             class_server_logs_sql_tranasctions_obj = data_service.server_logs_sql_transactions.Class_Common_Logs_Sql_Transactions(self.server_id, self.user_id)
-            class_server_logs_sql_tranasctions_obj.save_server_logs_in_db()
-            #Class_Ms_Sql_Helper_Obj = data_service.ms_sql_helper.Class_Ms_Sql_Helper()            
-            # sqlDBConn = Class_Ms_Sql_Helper_Obj.getConn()
-            # sqlCursor = sqlDBConn.cursor()
-            # # sql = 'INSERT INTO ServerLogs (ServerID,ServerLogs,CreatedDate,CreatedBy) VALUES(?,?,?,?)'
-            # # # count=0
-            # # # for x in self.server_logs:
-            # # #     print(x)
-            # # #     count += 1
-            # # #     if count == 50:
-            # # #         break
-            
-            # # params = []
-            # # sqlCursor.executemany(mySql_insert_query, records_to_insert)
-            # sql = "sp_insert_server_logs"
-            # sql = """\
-            # DECLARE @IsTransactionSuccessfull_value INT;
-            # DECLARE @TransactionMessage_value nvarchar(400);
-            # EXEC sp_insert_server_logs @ServerId = 1, @UserId = %s, @ServerLogFilePath = %s, @IsTransactionSuccessfull = @IsTransactionSuccessfull_value OUTPUT, @TransactionMessage = @TransactionMessage_value OUTPUT;
-            # SELECT @IsTransactionSuccessfull_value AS IsTransactionSuccessfull_value, @TransactionMessage_value AS TransactionMessage_value ;
-            # """            
-            # params = (self.user_id, self.server_log_file_path,)
-            # print(sql)
-            # sqlCursor.execute(sql, params)
-            # rows = sqlCursor.fetchall()
-            # while rows:
-            #     print(rows)
-            #     if sqlCursor.nextset():
-            #         rows = sqlCursor.fetchall()
-            #     else:
-            #         rows = None
-
-            # sqlDBConn.commit()
-            
+            class_server_logs_sql_tranasctions_obj.save_server_logs_in_db()            
             log.debug('{0}||{1}||Class_Solution_Management - save_server_logs_db - Completed' .format(self.server_id, self.user_id))
         except Exception as e:
-            error_msg = 'Critical exception raised while fetching server logs - {0}' .format(str(e)) 
+            error_msg = 'Critical exception raised while saving server logs - {0}' .format(str(e)) 
             log.error('{0}||{1}||Class_Solution_Management - save_server_logs_db - Exception || {2}' .format(self.server_id, self.user_id, error_msg))
+
+#/***************************************************************************
+# Read ServeLogs From Database 
+#/***************************************************************************
+    def get_server_logs_db(self):
+        try:
+            log.debug('{0}||{1}||Class_Solution_Management - get_server_logs_db - Started' .format(self.server_id, self.user_id))
+            class_server_logs_sql_tranasctions_obj = data_service.server_logs_sql_transactions.Class_Common_Logs_Sql_Transactions(self.server_id, self.user_id)
+            class_server_logs_sql_tranasctions_obj.get_server_logs_from_db()            
+            log.debug('{0}||{1}||Class_Solution_Management - get_server_logs_db - Completed' .format(self.server_id, self.user_id))
+        except Exception as e:
+            error_msg = 'Critical exception raised while fetching server logs - {0}' .format(str(e)) 
+            log.error('{0}||{1}||Class_Solution_Management - get_server_logs_db - Exception || {2}' .format(self.server_id, self.user_id, error_msg))

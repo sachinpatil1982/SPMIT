@@ -18,7 +18,8 @@ SELECT * FROM SystemLogs order by  Id DESC
 SELECT * FROM ServerLogs
 TRUNCATE TABLE ServerLogs
 SELECT getdate()
-
+sp_who
+kill 61
 DECLARE @ServerId AS INT = 1;
 DECLARE	@UserId as NVARCHAR(400) = 'SachinPatil'
 DECLARE	@ServerLogFilePath AS nvarchar(400) = 'C:\Temp\ServerLogs\results.txt';
@@ -27,6 +28,7 @@ DECLARE @TransactionMessage nvarchar (800);
 EXECUTE sp_insert_server_logs @ServerId, @UserId, @ServerLogFilePath, @IsTransactionSuccessfull OUTPUT, @TransactionMessage OUTPUT
 SELECT @IsTransactionSuccessfull, @TransactionMessage
 
+EXECUTE sp_get_server_logs 1
 --35100||Error number 10000 in the THROW statement is outside the valid range. 
 --Specify an error number in the valid range of 50000 to 2147483647.
 --Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 0, current count = 1.
