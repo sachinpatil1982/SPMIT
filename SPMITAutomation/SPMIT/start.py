@@ -32,14 +32,25 @@ log.debug('{0}||{1}||Application Process Cycle' .format(server_id, user_id))
 try:
     log.debug('{0}||{1}||Fetch Server Logs in Database - Started' .format(server_id, user_id))
     Class_File_Management_Obj = business.solution_management.Class_Solution_Management(server_id, user_id)
-    Class_File_Management_Obj.fetch_server_logs_in_db()
+    server_logs = Class_File_Management_Obj.fetch_server_logs_in_db()
     log.debug('{0}||{1}||Fetch Server Logs in Database - Completed' .format(server_id, user_id))
 except Exception as e:
     error_msg='Critical exception raised while fetching server logs in database'
     print(error_msg)
     log.error('{0}||{1}||Fetch Server Logs in Database - Exception || {2}' .format(server_id, user_id, error_msg))
-        
 
+#/***************************************************************************
+# Cleansing Server Logs For Log Analysis 
+#/***************************************************************************
+try:
+    log.debug('{0}||{1}||Cleansing Server Logs - Started' .format(server_id, user_id))
+    Class_File_Management_Obj = business.solution_management.Class_Solution_Management(server_id, user_id)
+    Class_File_Management_Obj.cleansing_server_logs(server_logs)
+    log.debug('{0}||{1}||Cleansing Server Logs - Completed' .format(server_id, user_id))
+except Exception as e:
+    error_msg='Critical exception raised while cleansing server logs in database'
+    print(error_msg)
+    log.error('{0}||{1}||Cleansing Server Logs - Exception || {2}' .format(server_id, user_id, error_msg))
 
 
 

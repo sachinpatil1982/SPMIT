@@ -16,9 +16,9 @@ GO
 -- =============================================
 -- Author:		Sachin Patil
 -- Create date: 24/02/2020
--- Description:	Insert Server Logs in Database
+-- Description:	Insert Filitered Server Logs in Database
 -- =============================================
-ALTER PROCEDURE sp_insert_server_logs( 	
+ALTER PROCEDURE sp_insert_filtered_server_logs( 	
 	@ServerId AS INT,
 	@UserId as NVARCHAR(400),
 	@ServerLogFilePath AS nvarchar(400),
@@ -40,31 +40,56 @@ SET XACT_ABORT ON;
 			IF @ServerLogFilePath IS NULL OR @ServerLogFilePath = ''  
 				THROW 50003, '@ServerLogFilePath is Mandatory Paramter', 1;
 			
-			TRUNCATE TABLE ServerLogs
+			TRUNCATE TABLE ServerLogs_Filtered
 
 			DECLARE @parameters varchar(100)
-			CREATE TABLE #tmp (ServerLogs NVARCHAR(MAX))
-			DECLARE @fieldsep char(1) = ',';
+			CREATE TABLE #tmp (	ServerIP_Address nvarchar(400),
+								LogRecorded  nvarchar(400),
+								EventSource nvarchar(MAX),
+								EventId INT,
+								EventCategory INT,
+								EventSubSources nvarchar(MAX),
+								EventDescriptions nvarchar(MAX))
+			DECLARE @fieldsep char(1) = '|';
 			DECLARE @recordsep char(1) = char(10);
 			DECLARE @sql varchar(8000) = ' 
 			BULK INSERT #tmp
 				FROM '''+@ServerLogFilePath+'''
-				WITH (FIRSTROW = 1, ROWTERMINATOR = '''+@recordsep+''')';
-			
+				WITH (FIRSTROW = 1, FIELDTERMINATOR = '''+@fieldsep+''', ROWTERMINATOR = '''+@recordsep+''')';
+
+			PRINT (@SQL)
 			EXEC (@SQL)
+
+--			BULK INSERT #tmp
+--				FROM 'C:\Temp\ServerLogs\results_filtered.txt'
+--				WITH (FIRSTROW = 1, FIELDTERMINATOR = '|', ROWTERMINATOR = '
+--')
 	
 			--SELECT * FROM #tmp
 
-			INSERT ServerLogs	(	ServerID,
-									ServerLogs,
-									CreatedDate,
-									CreatedBy
-								) 
-							SELECT	@ServerId AS ServerId,
-									ServerLogs,
-									GETDATE() AS CreatedDate, 
-									@UserId AS CreatedBy
-							FROM	#tmp
+			INSERT ServerLogs_Filtered	(	ServerID,
+											ServerIP_Address,
+											LogRecorded,
+											EventSource,
+											EventId,
+											EventCategory,
+											EventSubSources,
+											EventDescriptions,
+											CreatedDate,
+											CreatedBy
+										) 
+									SELECT	@ServerId AS ServerId,
+											ServerIP_Address,
+											STUFF((REPLACE((REPLACE((REPLACE(LogRecorded,'[','')),']','')),' +0000','')), PATINDEX('%' + ':' + '%', 
+											REPLACE((REPLACE((REPLACE(LogRecorded,'[','')),']','')),' +0000','')), LEN(':'), ' ') AS LogRecorded,
+											EventSource,
+											EventId,
+											EventCategory,
+											EventSubSources,
+											EventDescriptions,											
+											GETDATE() AS CreatedDate, 
+											@UserId AS CreatedBy
+									FROM	#tmp
 						
 			DROP TABLE #tmp
 

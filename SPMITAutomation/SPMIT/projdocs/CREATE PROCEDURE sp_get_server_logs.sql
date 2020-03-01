@@ -28,9 +28,9 @@ SET XACT_ABORT ON;
 		IF @ServerId IS NULL OR @ServerId <=0 
 			THROW 50001, 'ServerId is Mandatory Paramter', 1;
 			
-		SELECT	ServerLogs 
+		SELECT	Id, ServerLogs 
 		FROM	ServerLogs 
-		WHERE	Id = @ServerId
+		WHERE	ServerID = @ServerId
 		ORDER BY Id	
 
 	END TRY
