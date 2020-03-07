@@ -87,7 +87,7 @@ class Class_Common_Logs_Sql_Transactions:
             # print (result)
             # columns = [column[0] for column in sqlCursor.description]
             # df = pd.DataFrame.from_records(result, columns=columns)
-            df = pd.read_sql(sql, con=sqlDBConn).head(10)
+            df = pd.read_sql(sql, con=sqlDBConn)#.head(10)
             # print(df)
             # print(len(df.index))  
             df.set_index('Id', inplace=True)

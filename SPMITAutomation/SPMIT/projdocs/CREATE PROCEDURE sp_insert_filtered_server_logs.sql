@@ -65,7 +65,7 @@ SET XACT_ABORT ON;
 --				WITH (FIRSTROW = 1, FIELDTERMINATOR = '|', ROWTERMINATOR = '
 --')
 	
-			--SELECT * FROM #tmp
+			--SELECT * FROM #tmp ORDER BY LogRecorded
 
 			INSERT ServerLogs_Filtered	(	ServerID,
 											ServerIP_Address,
@@ -78,7 +78,7 @@ SET XACT_ABORT ON;
 											CreatedDate,
 											CreatedBy
 										) 
-									SELECT	@ServerId AS ServerId,
+									SELECT	TOP 80275 @ServerId AS ServerId,
 											ServerIP_Address,
 											STUFF((REPLACE((REPLACE((REPLACE(LogRecorded,'[','')),']','')),' +0000','')), PATINDEX('%' + ':' + '%', 
 											REPLACE((REPLACE((REPLACE(LogRecorded,'[','')),']','')),' +0000','')), LEN(':'), ' ') AS LogRecorded,
@@ -90,6 +90,7 @@ SET XACT_ABORT ON;
 											GETDATE() AS CreatedDate, 
 											@UserId AS CreatedBy
 									FROM	#tmp
+									ORDER BY LogRecorded
 						
 			DROP TABLE #tmp
 

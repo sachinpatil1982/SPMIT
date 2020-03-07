@@ -61,7 +61,7 @@ SET XACT_ABORT ON;
 									CreatedBy
 								) 
 							SELECT	@ServerId AS ServerId,
-									ServerLogs,
+									REPLACE(ServerLogs,'- abc-ay','- -') AS ServerLogs,
 									GETDATE() AS CreatedDate, 
 									@UserId AS CreatedBy
 							FROM	#tmp

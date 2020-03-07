@@ -16,6 +16,7 @@ SELECT * FROM SystemLogs order by  Id DESC
 --INSERT INTO ServerDetails 
 --SELECT 'Test Server','Test Server', 1, GETDATE(), 'SachinPatil'
 SELECT * FROM ServerLogs
+SELECT * FROM ServerLogs WHERE ServerLogs LIKE '%- abc-ay%'
 SELECT COUNT(*) FROM ServerLogs
 --TRUNCATE TABLE ServerLogs
 SELECT getdate()
@@ -48,18 +49,24 @@ SELECT @IsTransactionSuccessfull, @TransactionMessage
 
 SELECT CONVERT(datetime, '13/Oct/2019 03:06:09 +0000', 126)
 
+241||Conversion failed when converting date and/or time from character string.
+
 SELECT STUFF('13/Oct/2019:03:06:09 +0000', CHARINDEX(':', '13/Oct/2019:03:06:09 +0000'), LEN(':'), '')
 select STUFF('13/Oct/2019:03:06:09 +0000', PATINDEX('%' + ':' + '%', '13/Oct/2019:03:06:09 +0000'), LEN(':'), ' ')
 7330||Cannot fetch a row from OLE DB provider "BULK" for linked server "(null)".
 
+SELECT * FROM [dbo].[ServerLogs_IP_Address] ORDER BY ServerIP_Address_Count_Percent DESC
+EXECUTE sp_rep_server_logs_ip_address
 
+SELECT TOP 1 * FROM ServerLogs_Filtered ORDER BY LogRecorded DESC
+2019-11-12 11:25:48.000
+SELECT CONVERT (datetime,'2020-03-07')
+SELECT DATEDIFF(DD, '2017/08/25 07:00', '2017/08/28 12:45') AS DateDiff; 
 
-
-
-
-
-
-
+DECLARE @StartDate AS DATETIME = CONVERT (datetime,'2019-11-12');
+SELECT	ServerIP_Address,LogRecorded,DATEDIFF(DAY,LogRecorded,@StartDate)
+FROM	ServerLogs_Filtered
+WHERE	DATEDIFF(DAY,LogRecorded,@StartDate) <= 5
 
 
 

@@ -157,12 +157,12 @@ class Class_Solution_Management:
             # cleansing_server_logs_split_2[8] = str(cleansing_server_logs_split_1[6][7])            
 
             pd.set_option('display.max_rows', cleansing_server_logs_split_3.shape[0]+1)
-            for row in cleansing_server_logs_split_3.iterrows():
-                # A = str(row[1][7])
-                # print('The value of ServerLogs: {}'.format(A))
-                print(row)
-            print(len(cleansing_server_logs_split_3.index))
-            print(len(cleansing_server_logs_split_3.columns))
+            # for row in cleansing_server_logs_split_3.iterrows():
+            #     # A = str(row[1][7])
+            #     # print('The value of ServerLogs: {}'.format(A))
+            #     print(row)
+            # print(len(cleansing_server_logs_split_3.index))
+            # print(len(cleansing_server_logs_split_3.columns))
             # print (cleansing_server_logs_split)
             log.debug('{0}||{1}||Class_Solution_Management - cleansing_server_logs_filter_columns - Completed' .format(self.server_id, self.user_id))
             return cleansing_server_logs_split_3
