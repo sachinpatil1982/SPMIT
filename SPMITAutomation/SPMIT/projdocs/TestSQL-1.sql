@@ -15,6 +15,7 @@ SELECT * FROM SystemLogs order by  Id DESC
 --SELECT * FROM ServerDetails
 --INSERT INTO ServerDetails 
 --SELECT 'Test Server','Test Server', 1, GETDATE(), 'SachinPatil'
+SELECT TOP 10 * FROM ServerLogs
 SELECT * FROM ServerLogs
 SELECT * FROM ServerLogs WHERE ServerLogs LIKE '%- abc-ay%'
 SELECT COUNT(*) FROM ServerLogs
@@ -35,9 +36,10 @@ EXECUTE sp_get_server_logs 1
 --Specify an error number in the valid range of 50000 to 2147483647.
 --Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 0, current count = 1.
 
+SELECT TOP 10 * FROM ServerLogs_Filtered
 SELECT * FROM ServerLogs_Filtered
 SELECT COUNT(*) FROM ServerLogs_Filtered
-TRUNCATE TABLE ServerLogs_Filtered
+--TRUNCATE TABLE ServerLogs_Filtered
 
 DECLARE @ServerId AS INT = 1;
 DECLARE	@UserId as NVARCHAR(400) = 'SachinPatil'
@@ -67,6 +69,297 @@ DECLARE @StartDate AS DATETIME = CONVERT (datetime,'2019-11-12');
 SELECT	ServerIP_Address,LogRecorded,DATEDIFF(DAY,LogRecorded,@StartDate)
 FROM	ServerLogs_Filtered
 WHERE	DATEDIFF(DAY,LogRecorded,@StartDate) <= 5
+
+
+DECLARE @StartDate AS DATETIME = CONVERT (datetime,'2019-11-12');
+DECLARE @ServerId AS INT = 1;
+SELECT	SLF.ServerIP_Address,
+		SLF.LogRecorded,
+		SLF.EventSource,
+		SLF.EventSubSources,
+		SLF.EventDescriptions,
+		DATEDIFF(DAY,SLF.LogRecorded,@StartDate),
+		PJI.UserName,
+		PJI.ProjectName 
+FROM	ServerLogs_Filtered SLF
+		INNER JOIN ProjectInformation PJI ON PJI.ServerId = SLF.ServerId AND PJI.UserName = SLF.UserName AND PJI.ProjectName = SLF.ProjectName
+WHERE	DATEDIFF(DAY,LogRecorded,@StartDate) <= 30
+		AND PJI.ServerId  = @ServerId
+
+DECLARE @ServerId AS INT = 1;
+EXECUTE sp_rep_server_logs_track_user_activity @ServerId
+
+DECLARE @ServerId AS INT = 1;
+DECLARE @UserName AS NVARCHAR(400)='aaa';
+EXECUTE sp_rep_server_logs_track_user_project_activity @ServerId, @UserName
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

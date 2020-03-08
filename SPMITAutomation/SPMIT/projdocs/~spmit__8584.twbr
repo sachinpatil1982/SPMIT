@@ -1,0 +1,1465 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20193.19.1017.1259                               -->
+<workbook source-build='2019.3.1 (20193.19.1017.1259)' source-platform='win' version='18.1' xml:base='https://prod-useast-a.online.tableau.com' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AutoCreateAndUpdateDSDPhoneLayouts ignorable='true' predowngraded='true' />
+    <ISO8601DefaultCalendarPref ignorable='true' predowngraded='true' />
+    <NavigationAction />
+    <ParameterAction ignorable='true' predowngraded='true' />
+    <SheetIdentifierTracking ignorable='true' predowngraded='true' />
+    <WindowsPersistSimpleIdentifiers />
+    <ZoneBackgroundTransparency />
+  </document-format-change-manifest>
+  <repository-location id='spmit' path='/t/spmithub/workbooks' revision='1.3' site='spmithub' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <style-theme name='modern' />
+  <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>
+      <aliases enabled='yes' />
+      <column caption='ServerId' datatype='integer' default-format='N' name='[Parameter 1]' param-domain-type='any' role='measure' type='quantitative' value='1'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='UserName' datatype='string' name='[Parameter 2]' param-domain-type='any' role='measure' type='nominal' value='&quot;abc-vvv&quot;'>
+        <calculation class='tableau' formula='&quot;abc-vvv&quot;' />
+      </column>
+    </datasource>
+    <datasource caption='User Monthly Activity (SPMIT)' inline='true' name='sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f' version='18.1'>
+      <repository-location id='UserMonthlyActivitySPMIT' path='/t/spmithub/datasources' revision='1.0' site='spmithub' />
+      <connection channel='https' class='sqlproxy' dbname='UserMonthlyActivitySPMIT' directory='/dataserver' port='443' server='prod-useast-a.online.tableau.com' username=''>
+        <relation name='sqlproxy' table='[sqlproxy]' type='table' />
+        <calculations>
+          <calculation column='[Number of Records]' formula='1' />
+        </calculations>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>LogRecorded</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[LogRecorded]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>LogRecorded</remote-alias>
+            <ordinal>2</ordinal>
+            <layered>true</layered>
+            <family>sp_rep_server_logs_track_user_project_activity</family>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>1</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>Number of Records</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[Number of Records]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>Number of Records</remote-alias>
+            <ordinal>6</ordinal>
+            <layered>true</layered>
+            <caption>Number of Records</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+              <attribute datatype='string' name='formula'>&quot;1&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ProjectName</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[ProjectName]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>ProjectName</remote-alias>
+            <ordinal>1</ordinal>
+            <layered>true</layered>
+            <family>sp_rep_server_logs_track_user_project_activity</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LROOT' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>Project_Count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Project_Count]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>Project_Count</remote-alias>
+            <ordinal>3</ordinal>
+            <layered>true</layered>
+            <family>sp_rep_server_logs_track_user_project_activity</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>UserName</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[UserName]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>UserName</remote-alias>
+            <ordinal>0</ordinal>
+            <layered>true</layered>
+            <family>sp_rep_server_logs_track_user_project_activity</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LROOT' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='boolean' name='CAP_CREATE_TEMP_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_ALWAYS_USE_LOCAL_MAPPING_TABLES'>false</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_PREFER_LOCAL_MAPPING_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_REMOTE_MAPPING_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_CASE_INSENSITIVE_CONTAINS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_EXTRACT_RANGES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SORT_BY'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUBQUERIES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUBQUERY_QUERY_CONTEXT'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUPPORTS_LODJOINS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUPPORT_ANALYTIC_FUNCTIONS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_TOP_N'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_USE_QUERY_FUSION'>true</attribute>
+              <attribute datatype='boolean' name='CAP_SUPPORTS_SPLIT_FROM_LEFT'>true</attribute>
+              <attribute datatype='boolean' name='CAP_SUPPORTS_SPLIT_FROM_RIGHT'>true</attribute>
+              <attribute datatype='integer' name='charset'>0</attribute>
+              <attribute datatype='string' name='collation'>&quot;binary&quot;</attribute>
+              <attribute datatype='string' name='datasource'>&quot;&lt;?xml version=&apos;1.0&apos; encoding=&apos;utf-8&apos; ?&gt;&#10;&#10;&lt;datasource :source-version=&apos;18.1&apos; formatted-name=&apos;User Monthly Activity (SPMIT)&apos; inline=&apos;true&apos; version=&apos;18.1&apos; xmlns:user=&apos;http://www.tableausoftware.com/xml/user&apos;&gt;&#10;  &lt;repository-location id=&apos;UserMonthlyActivitySPMIT&apos; path=&apos;/t/spmithub/datasources&apos; revision=&apos;1.0&apos; site=&apos;spmithub&apos; /&gt;&#10;  &lt;connection channel=&apos;https&apos; class=&apos;sqlproxy&apos; dbname=&apos;UserMonthlyActivitySPMIT&apos; directory=&apos;/dataserver&apos; port=&apos;443&apos; server=&apos;prod-useast-a.online.tableau.com&apos;&gt;&#10;    &lt;relation name=&apos;sqlproxy&apos; table=&apos;[sqlproxy]&apos; type=&apos;table&apos; /&gt;&#10;    &lt;cols&gt;&#10;      &lt;map key=&apos;[LogRecorded]&apos; value=&apos;[sqlproxy].[LogRecorded]&apos; /&gt;&#10;      &lt;map key=&apos;[Number of Records]&apos; value=&apos;[sqlproxy].[Number of Records]&apos; /&gt;&#10;      &lt;map key=&apos;[ProjectName]&apos; value=&apos;[sqlproxy].[ProjectName]&apos; /&gt;&#10;      &lt;map key=&apos;[Project_Count]&apos; value=&apos;[sqlproxy].[Project_Count]&apos; /&gt;&#10;      &lt;map key=&apos;[UserName]&apos; value=&apos;[sqlproxy].[UserName]&apos; /&gt;&#10;    &lt;/cols&gt;&#10;  &lt;/connection&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[Number of Records]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; user:auto-column=&apos;numrec&apos; visual-totals=&apos;Default&apos;&gt;&#10;    &lt;calculation class=&apos;tableau&apos; formula=&apos;1&apos; /&gt;&#10;  &lt;/column&gt;&#10;  &lt;column aggregation=&apos;Count&apos; datatype=&apos;string&apos; default-type=&apos;nominal&apos; name=&apos;[ProjectName]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;nominal&apos; user-datatype=&apos;string&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Count&apos; datatype=&apos;string&apos; default-type=&apos;nominal&apos; name=&apos;[UserName]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;nominal&apos; user-datatype=&apos;string&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column-instance column=&apos;[ProjectName]&apos; derivation=&apos;None&apos; name=&apos;[none:ProjectName:nk]&apos; pivot=&apos;key&apos; type=&apos;nominal&apos; /&gt;&#10;  &lt;group caption=&apos;Action (UserName)&apos; hidden=&apos;true&apos; name=&apos;[Action (UserName)]&apos; name-style=&apos;unqualified&apos; user:auto-column=&apos;sheet_link&apos;&gt;&#10;    &lt;groupfilter function=&apos;crossjoin&apos;&gt;&#10;      &lt;groupfilter function=&apos;level-members&apos; level=&apos;[UserName]&apos; /&gt;&#10;    &lt;/groupfilter&gt;&#10;  &lt;/group&gt;&#10;  &lt;layout dim-ordering=&apos;alphabetic&apos; dim-percentage=&apos;0.393352&apos; measure-ordering=&apos;alphabetic&apos; measure-percentage=&apos;0.33241&apos; parameter-percentage=&apos;0.274238&apos; show-structure=&apos;true&apos; /&gt;&#10;  &lt;style&gt;&#10;    &lt;style-rule element=&apos;mark&apos;&gt;&#10;      &lt;encoding attr=&apos;color&apos; field=&apos;[none:ProjectName:nk]&apos; type=&apos;palette&apos;&gt;&#10;        &lt;map to=&apos;\#17becf&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;outlier-ui&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#1f77b4&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;abctext&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#1f77b4&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;boundary_lines_ext&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#1f77b4&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;platform---sc-just4u-integration&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#1f77b4&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;ppp-Claims-Project&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#2ca02c&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;line_item_extractor&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#2ca02c&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;ress-web-app&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#7f7f7f&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;abc-python-common&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#7f7f7f&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;ui&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#8c564b&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;aaa_icd_processing&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#8c564b&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;session-manager&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#9467bd&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;ooo_stack&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#98df8a&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;aaa-ui-backend&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#9edae5&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;rule-engine&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#aec7e8&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;aaa_sg_poc_outlier_code&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#bcbd22&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;cku&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#c49c94&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;cz-arch&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#c5b0d5&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;connection-manager&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#c7c7c7&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;efile-bl&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#d62728&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;ooo_engine&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#dbdb8d&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;efile-dm&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#e377c2&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;aaa-sg-outlier&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#e377c2&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;sso&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#f7b6d2&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;cz-orchestrator&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#ff7f0e&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;header_info_extractor&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#ff7f0e&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;ress-app&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#ff7f0e&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;stp-calculator&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#ff9896&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;business-logic&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#ffbb78&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;aaa_sing_ml&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;      &lt;/encoding&gt;&#10;    &lt;/style-rule&gt;&#10;  &lt;/style&gt;&#10;  &lt;semantic-values&gt;&#10;    &lt;semantic-value key=&apos;[Country].[Name]&apos; value=&apos;&amp;quot;United States&amp;quot;&apos; /&gt;&#10;  &lt;/semantic-values&gt;&#10;  &lt;datasource-dependencies datasource=&apos;Parameters&apos;&gt;&#10;    &lt;column caption=&apos;ServerId&apos; datatype=&apos;integer&apos; default-format=&apos;N&apos; name=&apos;[Parameter 1]&apos; param-domain-type=&apos;any&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; value=&apos;1&apos;&gt;&#10;      &lt;calculation class=&apos;tableau&apos; formula=&apos;1&apos; /&gt;&#10;    &lt;/column&gt;&#10;    &lt;column caption=&apos;UserName&apos; datatype=&apos;string&apos; name=&apos;[Parameter 2]&apos; param-domain-type=&apos;any&apos; role=&apos;measure&apos; type=&apos;nominal&apos; value=&apos;&amp;quot;aaa&amp;quot;&apos;&gt;&#10;      &lt;calculation class=&apos;tableau&apos; formula=&apos;&amp;quot;aaa&amp;quot;&apos; /&gt;&#10;    &lt;/column&gt;&#10;  &lt;/datasource-dependencies&gt;&#10;&lt;/datasource&gt;&#10;&quot;</attribute>
+              <attribute datatype='string' name='dialect-definition'>&quot;&lt;dialect-definition&gt;&#10;  &lt;primary-dialect class=&apos;hyper&apos; version=&apos;0.0.0&apos;&gt;&#10;  &lt;/primary-dialect&gt;&#10;&lt;/dialect-definition&gt;&#10;&quot;</attribute>
+              <attribute datatype='boolean' name='extract-active'>true</attribute>
+              <attribute datatype='boolean' name='fast-get-server-time'>true</attribute>
+              <attribute datatype='string' name='update-time'>&quot;3/8/2020 3:11:25 PM&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <overridable-settings>
+        <date-options fiscal-year-start='january' start-of-week='sunday' />
+        <default-date-format />
+        <default-calendar-type>Gregorian</default-calendar-type>
+      </overridable-settings>
+      <column aggregation='Year' datatype='date' default-type='ordinal' layered='true' name='[LogRecorded]' pivot='key' role='dimension' type='ordinal' user-datatype='date' visual-totals='Default' />
+      <column aggregation='Sum' datatype='integer' default-type='quantitative' layered='true' name='[Number of Records]' pivot='key' role='measure' type='quantitative' user-datatype='integer' user:auto-column='numrec' visual-totals='Default'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[ProjectName]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column aggregation='Sum' datatype='integer' default-type='quantitative' layered='true' name='[Project_Count]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[UserName]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column-instance column='[ProjectName]' derivation='None' name='[none:ProjectName:nk]' pivot='key' type='nominal' />
+      <group auto-hidden='true' caption='Action (UserName)' hidden='true' layered='true' name='[Action (UserName)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[UserName]' />
+        </groupfilter>
+      </group>
+      <layout dim-ordering='alphabetic' dim-percentage='0.397059' measure-ordering='alphabetic' measure-percentage='0.332353' parameter-percentage='0.270588' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:ProjectName:nk]' type='palette'>
+            <map to='#17becf'>
+              <bucket>&quot;outlier-ui&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;abctext&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;boundary_lines_ext&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;platform---sc-just4u-integration&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;ppp-Claims-Project&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;line_item_extractor&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;ress-web-app&quot;</bucket>
+            </map>
+            <map to='#7f7f7f'>
+              <bucket>&quot;abc-python-common&quot;</bucket>
+            </map>
+            <map to='#7f7f7f'>
+              <bucket>&quot;ui&quot;</bucket>
+            </map>
+            <map to='#8c564b'>
+              <bucket>&quot;aaa_icd_processing&quot;</bucket>
+            </map>
+            <map to='#8c564b'>
+              <bucket>&quot;session-manager&quot;</bucket>
+            </map>
+            <map to='#9467bd'>
+              <bucket>&quot;ooo_stack&quot;</bucket>
+            </map>
+            <map to='#98df8a'>
+              <bucket>&quot;aaa-ui-backend&quot;</bucket>
+            </map>
+            <map to='#9edae5'>
+              <bucket>&quot;rule-engine&quot;</bucket>
+            </map>
+            <map to='#aec7e8'>
+              <bucket>&quot;aaa_sg_poc_outlier_code&quot;</bucket>
+            </map>
+            <map to='#bcbd22'>
+              <bucket>&quot;cku&quot;</bucket>
+            </map>
+            <map to='#c49c94'>
+              <bucket>&quot;cz-arch&quot;</bucket>
+            </map>
+            <map to='#c5b0d5'>
+              <bucket>&quot;connection-manager&quot;</bucket>
+            </map>
+            <map to='#c7c7c7'>
+              <bucket>&quot;efile-bl&quot;</bucket>
+            </map>
+            <map to='#d62728'>
+              <bucket>&quot;ooo_engine&quot;</bucket>
+            </map>
+            <map to='#dbdb8d'>
+              <bucket>&quot;efile-dm&quot;</bucket>
+            </map>
+            <map to='#e377c2'>
+              <bucket>&quot;aaa-sg-outlier&quot;</bucket>
+            </map>
+            <map to='#e377c2'>
+              <bucket>&quot;sso&quot;</bucket>
+            </map>
+            <map to='#f7b6d2'>
+              <bucket>&quot;cz-orchestrator&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;header_info_extractor&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;ress-app&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;stp-calculator&quot;</bucket>
+            </map>
+            <map to='#ff9896'>
+              <bucket>&quot;business-logic&quot;</bucket>
+            </map>
+            <map to='#ffbb78'>
+              <bucket>&quot;aaa_sing_ml&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+    <datasource caption='User Monthly Activity 2' inline='true' name='federated.0v9d1hk1xq81nd17qvk0g1d0wtin' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='EC2AMAZ-848AN2Q' name='sqlserver.09sudse0oejt3q12scxl70lka2lx'>
+            <connection authentication='sqlserver' class='sqlserver' dbname='SPMIT' minimum-driver-version='SQL Server Native Client 10.0' odbc-native-protocol='yes' one-time-sql='' server='EC2AMAZ-848AN2Q' username='spmit_admin' />
+          </named-connection>
+        </named-connections>
+        <relation connection='sqlserver.09sudse0oejt3q12scxl70lka2lx' name='sp_rep_server_logs_track_user_project_activity' stored-proc='[dbo].[sp_rep_server_logs_track_user_project_activity]' type='stored-proc'>
+          <actual-parameters>
+            <column name='@ServerId' ordinal='1' parameter='[Parameters].[Parameter 1]' value='1' />
+            <column name='@UserName' ordinal='2' parameter='[Parameters].[Parameter 2]' value='&quot;&quot;' />
+          </actual-parameters>
+        </relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>UserName</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[UserName]</local-name>
+            <parent-name>[sp_rep_server_logs_track_user_project_activity]</parent-name>
+            <remote-alias>UserName</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>400</width>
+            <contains-null>false</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ProjectName</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[ProjectName]</local-name>
+            <parent-name>[sp_rep_server_logs_track_user_project_activity]</parent-name>
+            <remote-alias>ProjectName</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>400</width>
+            <contains-null>false</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LogRecorded</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[LogRecorded]</local-name>
+            <parent-name>[sp_rep_server_logs_track_user_project_activity]</parent-name>
+            <remote-alias>LogRecorded</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+              <attribute datatype='boolean' name='TypeIsDateTime2orDate'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Project_Count</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Project_Count]</local-name>
+            <parent-name>[sp_rep_server_logs_track_user_project_activity]</parent-name>
+            <remote-alias>Project_Count</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <layout dim-ordering='alphabetic' dim-percentage='0.394118' measure-ordering='alphabetic' measure-percentage='0.335294' parameter-percentage='0.270588' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='ServerId' datatype='integer' default-format='N' name='[Parameter 1]' param-domain-type='any' role='measure' type='quantitative' value='1'>
+          <calculation class='tableau' formula='1' />
+        </column>
+        <column caption='UserName' datatype='string' name='[Parameter 2]' param-domain-type='any' role='measure' type='nominal' value='&quot;abc-vvv&quot;'>
+          <calculation class='tableau' formula='&quot;abc-vvv&quot;' />
+        </column>
+      </datasource-dependencies>
+    </datasource>
+    <datasource caption='Track User Activity (SPMIT)' inline='true' name='sqlproxy.0yt1bqq026y0n414jcxc91gninjs' version='18.1'>
+      <repository-location derived-from='/datasources/TrackUserActivitySPMIT?rev=1.0' id='TrackUserActivitySPMIT' path='/t/spmithub/datasources' revision='1.1' site='spmithub' />
+      <connection channel='https' class='sqlproxy' dbname='TrackUserActivitySPMIT' directory='/dataserver' port='443' server='prod-useast-a.online.tableau.com' username=''>
+        <relation name='sqlproxy' table='[sqlproxy]' type='table' />
+        <calculations>
+          <calculation column='[Number of Records]' formula='1' />
+        </calculations>
+        <metadata-records>
+          <metadata-record class='measure'>
+            <remote-name>Number of Records</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[Number of Records]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>Number of Records</remote-alias>
+            <ordinal>5</ordinal>
+            <layered>true</layered>
+            <caption>Number of Records</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+              <attribute datatype='string' name='formula'>&quot;1&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>UserName</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[UserName]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>UserName</remote-alias>
+            <ordinal>0</ordinal>
+            <layered>true</layered>
+            <family>sp_rep_server_logs_track_user_activity</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LROOT' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>User_Count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[User_Count]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>User_Count</remote-alias>
+            <ordinal>1</ordinal>
+            <layered>true</layered>
+            <family>sp_rep_server_logs_track_user_activity</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>User_Count_Percent</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[User_Count_Percent]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>User_Count_Percent</remote-alias>
+            <ordinal>2</ordinal>
+            <layered>true</layered>
+            <family>sp_rep_server_logs_track_user_activity</family>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='boolean' name='CAP_CREATE_TEMP_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_ALWAYS_USE_LOCAL_MAPPING_TABLES'>false</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_PREFER_LOCAL_MAPPING_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_REMOTE_MAPPING_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_CASE_INSENSITIVE_CONTAINS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_EXTRACT_RANGES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SORT_BY'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUBQUERIES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUBQUERY_QUERY_CONTEXT'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUPPORTS_LODJOINS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUPPORT_ANALYTIC_FUNCTIONS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_TOP_N'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_USE_QUERY_FUSION'>true</attribute>
+              <attribute datatype='boolean' name='CAP_SUPPORTS_SPLIT_FROM_LEFT'>true</attribute>
+              <attribute datatype='boolean' name='CAP_SUPPORTS_SPLIT_FROM_RIGHT'>true</attribute>
+              <attribute datatype='integer' name='charset'>0</attribute>
+              <attribute datatype='string' name='collation'>&quot;binary&quot;</attribute>
+              <attribute datatype='string' name='datasource'>&quot;&lt;?xml version=&apos;1.0&apos; encoding=&apos;utf-8&apos; ?&gt;&#10;&#10;&lt;datasource :source-version=&apos;18.1&apos; formatted-name=&apos;Track User Activity (SPMIT)&apos; inline=&apos;true&apos; version=&apos;18.1&apos; xml:base=&apos;https://prod-useast-a.online.tableau.com&apos; xmlns:user=&apos;http://www.tableausoftware.com/xml/user&apos;&gt;&#10;  &lt;repository-location derived-from=&apos;/datasources/TrackUserActivitySPMIT?rev=1.0&apos; id=&apos;TrackUserActivitySPMIT&apos; path=&apos;/t/spmithub/datasources&apos; revision=&apos;1.1&apos; site=&apos;spmithub&apos; /&gt;&#10;  &lt;connection channel=&apos;https&apos; class=&apos;sqlproxy&apos; dbname=&apos;TrackUserActivitySPMIT&apos; directory=&apos;/dataserver&apos; port=&apos;443&apos; server=&apos;prod-useast-a.online.tableau.com&apos;&gt;&#10;    &lt;relation name=&apos;sqlproxy&apos; table=&apos;[sqlproxy]&apos; type=&apos;table&apos; /&gt;&#10;    &lt;cols&gt;&#10;      &lt;map key=&apos;[Number of Records]&apos; value=&apos;[sqlproxy].[Number of Records]&apos; /&gt;&#10;      &lt;map key=&apos;[UserName]&apos; value=&apos;[sqlproxy].[UserName]&apos; /&gt;&#10;      &lt;map key=&apos;[User_Count]&apos; value=&apos;[sqlproxy].[User_Count]&apos; /&gt;&#10;      &lt;map key=&apos;[User_Count_Percent]&apos; value=&apos;[sqlproxy].[User_Count_Percent]&apos; /&gt;&#10;    &lt;/cols&gt;&#10;  &lt;/connection&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[Number of Records]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; user:auto-column=&apos;numrec&apos; visual-totals=&apos;Default&apos;&gt;&#10;    &lt;calculation class=&apos;tableau&apos; formula=&apos;1&apos; /&gt;&#10;  &lt;/column&gt;&#10;  &lt;column aggregation=&apos;Count&apos; datatype=&apos;string&apos; default-type=&apos;nominal&apos; name=&apos;[UserName]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;nominal&apos; user-datatype=&apos;string&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column-instance column=&apos;[UserName]&apos; derivation=&apos;None&apos; name=&apos;[none:UserName:nk]&apos; pivot=&apos;key&apos; type=&apos;nominal&apos; /&gt;&#10;  &lt;layout dim-ordering=&apos;alphabetic&apos; dim-percentage=&apos;0.296399&apos; measure-ordering=&apos;alphabetic&apos; measure-percentage=&apos;0.409972&apos; parameter-percentage=&apos;0.293629&apos; show-structure=&apos;true&apos; /&gt;&#10;  &lt;style&gt;&#10;    &lt;style-rule element=&apos;mark&apos;&gt;&#10;      &lt;encoding attr=&apos;color&apos; field=&apos;[none:UserName:nk]&apos; type=&apos;palette&apos;&gt;&#10;        &lt;map to=&apos;\#4e79a7&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;aaa&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#59a14f&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;ccc&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#76b7b2&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;abc-vvv&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#e15759&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;abc-bg&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#f28e2b&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;aaa-ooo&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;      &lt;/encoding&gt;&#10;    &lt;/style-rule&gt;&#10;  &lt;/style&gt;&#10;  &lt;semantic-values&gt;&#10;    &lt;semantic-value key=&apos;[Country].[Name]&apos; value=&apos;&amp;quot;United States&amp;quot;&apos; /&gt;&#10;  &lt;/semantic-values&gt;&#10;  &lt;datasource-dependencies datasource=&apos;Parameters&apos;&gt;&#10;    &lt;column caption=&apos;ServerId&apos; datatype=&apos;integer&apos; default-format=&apos;N&apos; name=&apos;[Parameter 1]&apos; param-domain-type=&apos;any&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; value=&apos;1&apos;&gt;&#10;      &lt;calculation class=&apos;tableau&apos; formula=&apos;1&apos; /&gt;&#10;    &lt;/column&gt;&#10;  &lt;/datasource-dependencies&gt;&#10;&lt;/datasource&gt;&#10;&quot;</attribute>
+              <attribute datatype='string' name='dialect-definition'>&quot;&lt;dialect-definition&gt;&#10;  &lt;primary-dialect class=&apos;hyper&apos; version=&apos;0.0.0&apos;&gt;&#10;  &lt;/primary-dialect&gt;&#10;&lt;/dialect-definition&gt;&#10;&quot;</attribute>
+              <attribute datatype='boolean' name='extract-active'>true</attribute>
+              <attribute datatype='boolean' name='fast-get-server-time'>true</attribute>
+              <attribute datatype='string' name='update-time'>&quot;3/8/2020 2:44:49 PM&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <overridable-settings>
+        <date-options fiscal-year-start='january' start-of-week='sunday' />
+        <default-date-format />
+        <default-calendar-type>Gregorian</default-calendar-type>
+      </overridable-settings>
+      <column aggregation='Sum' datatype='integer' default-type='quantitative' layered='true' name='[Number of Records]' pivot='key' role='measure' type='quantitative' user-datatype='integer' user:auto-column='numrec' visual-totals='Default'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[UserName]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column aggregation='Sum' datatype='integer' default-type='quantitative' layered='true' name='[User_Count]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Sum' datatype='real' default-type='quantitative' layered='true' name='[User_Count_Percent]' pivot='key' role='measure' type='quantitative' user-datatype='real' visual-totals='Default' />
+      <column-instance column='[UserName]' derivation='None' name='[none:UserName:nk]' pivot='key' type='nominal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.294118' measure-ordering='alphabetic' measure-percentage='0.414706' parameter-percentage='0.291176' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:UserName:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;aaa&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;ccc&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;abc-vvv&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;abc-bg&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;aaa-ooo&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+    <datasource caption='Fetch ServerLogs_IP_Address (SPMIT)' inline='true' name='sqlproxy.0yh35tn07553wj1009b5w05d1ye9' version='18.1'>
+      <repository-location id='FetchServerLogs_IP_AddressSPMIT' path='/t/spmithub/datasources' revision='1.0' site='spmithub' />
+      <connection channel='https' class='sqlproxy' dbname='FetchServerLogs_IP_AddressSPMIT' directory='/dataserver' port='443' server='prod-useast-a.online.tableau.com' server-oauth='' username='' workgroup-auth-mode='prompt'>
+        <relation name='sqlproxy' table='[sqlproxy]' type='table' />
+        <calculations>
+          <calculation column='[Number of Records]' formula='1' />
+        </calculations>
+        <metadata-records>
+          <metadata-record class='measure'>
+            <remote-name>Number of Records</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[Number of Records]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>Number of Records</remote-alias>
+            <ordinal>5</ordinal>
+            <layered>true</layered>
+            <caption>Number of Records</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+              <attribute datatype='string' name='formula'>&quot;1&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ServerIP_Address</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[ServerIP_Address]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>ServerIP_Address</remote-alias>
+            <ordinal>0</ordinal>
+            <layered>true</layered>
+            <caption>ServerIP Address</caption>
+            <family>sp_rep_server_logs_ip_address</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LROOT' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>ServerIP_Address_Count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ServerIP_Address_Count]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>ServerIP_Address_Count</remote-alias>
+            <ordinal>1</ordinal>
+            <layered>true</layered>
+            <caption>ServerIP Address Count</caption>
+            <family>sp_rep_server_logs_ip_address</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>ServerIP_Address_Count_Percent</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[ServerIP_Address_Count_Percent]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>ServerIP_Address_Count_Percent</remote-alias>
+            <ordinal>2</ordinal>
+            <layered>true</layered>
+            <family>sp_rep_server_logs_ip_address</family>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='boolean' name='CAP_CREATE_TEMP_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_ALWAYS_USE_LOCAL_MAPPING_TABLES'>false</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_PREFER_LOCAL_MAPPING_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_REMOTE_MAPPING_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_CASE_INSENSITIVE_CONTAINS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_EXTRACT_RANGES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SORT_BY'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUBQUERIES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUBQUERY_QUERY_CONTEXT'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUPPORTS_LODJOINS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUPPORT_ANALYTIC_FUNCTIONS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_TOP_N'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_USE_QUERY_FUSION'>true</attribute>
+              <attribute datatype='boolean' name='CAP_SUPPORTS_SPLIT_FROM_LEFT'>true</attribute>
+              <attribute datatype='boolean' name='CAP_SUPPORTS_SPLIT_FROM_RIGHT'>true</attribute>
+              <attribute datatype='integer' name='charset'>0</attribute>
+              <attribute datatype='string' name='collation'>&quot;binary&quot;</attribute>
+              <attribute datatype='string' name='datasource'>&quot;&lt;?xml version=&apos;1.0&apos; encoding=&apos;utf-8&apos; ?&gt;&#10;&#10;&lt;datasource :source-version=&apos;18.1&apos; formatted-name=&apos;Fetch ServerLogs_IP_Address (SPMIT)&apos; inline=&apos;true&apos; version=&apos;18.1&apos; xml:base=&apos;https://prod-useast-a.online.tableau.com&apos; xmlns:user=&apos;http://www.tableausoftware.com/xml/user&apos;&gt;&#10;  &lt;repository-location id=&apos;FetchServerLogs_IP_AddressSPMIT&apos; path=&apos;/t/spmithub/datasources&apos; revision=&apos;1.0&apos; site=&apos;spmithub&apos; /&gt;&#10;  &lt;connection channel=&apos;https&apos; class=&apos;sqlproxy&apos; dbname=&apos;FetchServerLogs_IP_AddressSPMIT&apos; directory=&apos;/dataserver&apos; port=&apos;443&apos; server=&apos;prod-useast-a.online.tableau.com&apos;&gt;&#10;    &lt;relation name=&apos;sqlproxy&apos; table=&apos;[sqlproxy]&apos; type=&apos;table&apos; /&gt;&#10;    &lt;cols&gt;&#10;      &lt;map key=&apos;[Number of Records]&apos; value=&apos;[sqlproxy].[Number of Records]&apos; /&gt;&#10;      &lt;map key=&apos;[ServerIP_Address]&apos; value=&apos;[sqlproxy].[ServerIP_Address]&apos; /&gt;&#10;      &lt;map key=&apos;[ServerIP_Address_Count]&apos; value=&apos;[sqlproxy].[ServerIP_Address_Count]&apos; /&gt;&#10;      &lt;map key=&apos;[ServerIP_Address_Count_Percent]&apos; value=&apos;[sqlproxy].[ServerIP_Address_Count_Percent]&apos; /&gt;&#10;    &lt;/cols&gt;&#10;  &lt;/connection&gt;&#10;  &lt;aliases enabled=&apos;yes&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[Number of Records]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; user:auto-column=&apos;numrec&apos; visual-totals=&apos;Default&apos;&gt;&#10;    &lt;calculation class=&apos;tableau&apos; formula=&apos;1&apos; /&gt;&#10;  &lt;/column&gt;&#10;  &lt;column aggregation=&apos;Count&apos; caption=&apos;ServerIP Address&apos; datatype=&apos;string&apos; default-type=&apos;nominal&apos; name=&apos;[ServerIP_Address]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;nominal&apos; user-datatype=&apos;string&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;ServerIP Address Count&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[ServerIP_Address_Count]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;layout dim-ordering=&apos;alphabetic&apos; dim-percentage=&apos;0.32199&apos; measure-ordering=&apos;alphabetic&apos; measure-percentage=&apos;0.418848&apos; parameter-percentage=&apos;0.259162&apos; show-structure=&apos;true&apos; /&gt;&#10;  &lt;semantic-values&gt;&#10;    &lt;semantic-value key=&apos;[Country].[Name]&apos; value=&apos;&amp;quot;United States&amp;quot;&apos; /&gt;&#10;  &lt;/semantic-values&gt;&#10;&lt;/datasource&gt;&#10;&quot;</attribute>
+              <attribute datatype='string' name='dialect-definition'>&quot;&lt;dialect-definition&gt;&#10;  &lt;primary-dialect class=&apos;hyper&apos; version=&apos;0.0.0&apos;&gt;&#10;  &lt;/primary-dialect&gt;&#10;&lt;/dialect-definition&gt;&#10;&quot;</attribute>
+              <attribute datatype='boolean' name='extract-active'>true</attribute>
+              <attribute datatype='boolean' name='fast-get-server-time'>true</attribute>
+              <attribute datatype='string' name='update-time'>&quot;3/8/2020 10:34:33 AM&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <overridable-settings>
+        <date-options fiscal-year-start='january' start-of-week='sunday' />
+        <default-date-format />
+        <default-calendar-type>Gregorian</default-calendar-type>
+      </overridable-settings>
+      <aliases enabled='yes' />
+      <column aggregation='Sum' datatype='integer' default-type='quantitative' layered='true' name='[Number of Records]' pivot='key' role='measure' type='quantitative' user-datatype='integer' user:auto-column='numrec' visual-totals='Default'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column aggregation='Count' caption='ServerIP Address' datatype='string' default-type='nominal' layered='true' name='[ServerIP_Address]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column aggregation='Sum' caption='ServerIP Address Count' datatype='integer' default-type='quantitative' layered='true' name='[ServerIP_Address_Count]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Sum' datatype='real' default-type='quantitative' layered='true' name='[ServerIP_Address_Count_Percent]' pivot='key' role='measure' type='quantitative' user-datatype='real' visual-totals='Default' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.293629' measure-ordering='alphabetic' measure-percentage='0.412742' parameter-percentage='0.293629' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <actions>
+    <nav-action caption='Open User Montly Activity' name='[Action2]'>
+      <activation type='on-select' />
+      <source dashboard='User Commit View' type='sheet' worksheet='Track User Activity' />
+      <params>
+        <param name='sheet' value='User Commit View' />
+        <param name='single-select' value='' />
+      </params>
+    </nav-action>
+    <nav-action caption='GoToSheet1' name='[Action3]'>
+      <activation type='on-select' />
+      <source dashboard='Dashboard 2' type='sheet' worksheet='Track User Activity' />
+      <params>
+        <param name='sheet' value='Dashboard 2' />
+        <param name='single-select' value='' />
+      </params>
+    </nav-action>
+    <edit-parameter-action caption='UserName' name='[Action1]'>
+      <activation type='on-select' />
+      <source dashboard='User Commit View' type='sheet' worksheet='Track User Activity' />
+      <agg-type type='attr' />
+      <params>
+        <param name='source-field' value='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]' />
+        <param name='target-parameter' value='[Parameters].[Parameter 2]' />
+      </params>
+    </edit-parameter-action>
+    <edit-parameter-action caption='Parameter1' name='[Action4]'>
+      <activation type='on-select' />
+      <source dashboard='Dashboard 2' type='sheet' worksheet='Track User Activity' />
+      <agg-type type='attr' />
+      <params>
+        <param name='source-field' value='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]' />
+        <param name='target-parameter' value='[Parameters].[Parameter 2]' />
+      </params>
+    </edit-parameter-action>
+  </actions>
+  <worksheets>
+    <worksheet name='Track User Activity'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Plot 2 - User&apos;s Last 30 days Activities </run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Track User Activity (SPMIT)' name='sqlproxy.0yt1bqq026y0n414jcxc91gninjs' />
+          </datasources>
+          <datasource-dependencies datasource='sqlproxy.0yt1bqq026y0n414jcxc91gninjs'>
+            <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[UserName]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+            <column aggregation='Sum' datatype='real' default-type='quantitative' layered='true' name='[User_Count_Percent]' pivot='key' role='measure' type='quantitative' user-datatype='real' visual-totals='Default' />
+            <column-instance column='[UserName]' derivation='None' name='[none:UserName:nk]' pivot='key' type='nominal' />
+            <column-instance column='[User_Count_Percent]' derivation='Sum' name='[sum:User_Count_Percent:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='cell-w' value='176' />
+            <format attr='cell-h' value='176' />
+            <format attr='cell' value='22' />
+            <format attr='cell-q' value='110' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Pie' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]' />
+              <wedge-size column='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[sum:User_Count_Percent:qk]' />
+              <size column='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[sum:User_Count_Percent:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.1754143238067627' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{6001F582-0048-4D51-AD82-79B30976000D}' />
+    </worksheet>
+    <worksheet name='Uniqe IP Address'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Plot 1 - Unique IP Address Recorded In System</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Fetch ServerLogs_IP_Address (SPMIT)' name='sqlproxy.0yh35tn07553wj1009b5w05d1ye9' />
+          </datasources>
+          <datasource-dependencies datasource='sqlproxy.0yh35tn07553wj1009b5w05d1ye9'>
+            <column aggregation='Count' caption='ServerIP Address' datatype='string' default-type='nominal' layered='true' name='[ServerIP_Address]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+            <column aggregation='Sum' caption='ServerIP Address Count' datatype='integer' default-type='quantitative' layered='true' name='[ServerIP_Address_Count]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+            <column-instance column='[ServerIP_Address]' derivation='None' name='[none:ServerIP_Address:nk]' pivot='key' type='nominal' />
+            <column-instance column='[ServerIP_Address_Count]' derivation='Sum' name='[pcto:sum:ServerIP_Address_Count:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Table' type='PctTotal' />
+            </column-instance>
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Pie' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[sqlproxy.0yh35tn07553wj1009b5w05d1ye9].[none:ServerIP_Address:nk]' />
+              <wedge-size column='[sqlproxy.0yh35tn07553wj1009b5w05d1ye9].[pcto:sum:ServerIP_Address_Count:qk]' />
+              <size column='[sqlproxy.0yh35tn07553wj1009b5w05d1ye9].[pcto:sum:ServerIP_Address_Count:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.2193922996520996' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+        <percentages enabled='true' mode='table' />
+      </table>
+      <simple-id uuid='{D8D3A329-D944-4644-9C24-9F63908B7135}' />
+    </worksheet>
+    <worksheet lock-updates='true' name='Users Monthly Activity'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='User Monthly Activity (SPMIT)' name='sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f' />
+            <datasource caption='User Monthly Activity 2' name='federated.0v9d1hk1xq81nd17qvk0g1d0wtin' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0v9d1hk1xq81nd17qvk0g1d0wtin'>
+            <column datatype='string' name='[UserName]' role='dimension' type='nominal' />
+            <column-instance column='[UserName]' derivation='None' name='[none:UserName:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <datasource-dependencies datasource='sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f'>
+            <column aggregation='Year' datatype='date' default-type='ordinal' layered='true' name='[LogRecorded]' pivot='key' role='dimension' type='ordinal' user-datatype='date' visual-totals='Default' />
+            <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[ProjectName]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+            <column aggregation='Sum' datatype='integer' default-type='quantitative' layered='true' name='[Project_Count]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+            <column-instance column='[LogRecorded]' derivation='Day' name='[dy:LogRecorded:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[LogRecorded]' derivation='Month' name='[mn:LogRecorded:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[ProjectName]' derivation='None' name='[none:ProjectName:nk]' pivot='key' type='nominal' />
+            <column-instance column='[LogRecorded]' derivation='Quarter' name='[qr:LogRecorded:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Project_Count]' derivation='Sum' name='[sum:Project_Count:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[LogRecorded]' derivation='Year' name='[yr:LogRecorded:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[dy:LogRecorded:ok]'>
+            <groupfilter function='level-members' level='[dy:LogRecorded:ok]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]'>
+            <groupfilter function='level-members' level='[none:ProjectName:nk]' />
+          </filter>
+          <slices>
+            <column>[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]</column>
+            <column>[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[dy:LogRecorded:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' />
+              <lod column='[federated.0v9d1hk1xq81nd17qvk0g1d0wtin].[none:UserName:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='size' value='1.0434806346893311' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[sum:Project_Count:qk]</rows>
+        <cols>([sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[yr:LogRecorded:ok] / ([sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[qr:LogRecorded:ok] / ([sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[mn:LogRecorded:ok] / [sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[dy:LogRecorded:ok])))</cols>
+      </table>
+      <simple-id uuid='{98FB1A5D-A8A4-427D-93C1-943985357287}' />
+    </worksheet>
+    <worksheet name='Users Monthly Activity-2'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='User Monthly Activity (SPMIT)' name='sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f' />
+          </datasources>
+          <datasource-dependencies datasource='sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f'>
+            <column aggregation='Year' datatype='date' default-type='ordinal' layered='true' name='[LogRecorded]' pivot='key' role='dimension' type='ordinal' user-datatype='date' visual-totals='Default' />
+            <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[ProjectName]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+            <column aggregation='Sum' datatype='integer' default-type='quantitative' layered='true' name='[Project_Count]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+            <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[UserName]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+            <column-instance column='[LogRecorded]' derivation='Day' name='[dy:LogRecorded:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[LogRecorded]' derivation='Month' name='[mn:LogRecorded:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[ProjectName]' derivation='None' name='[none:ProjectName:nk]' pivot='key' type='nominal' />
+            <column-instance column='[UserName]' derivation='None' name='[none:UserName:nk]' pivot='key' type='nominal' />
+            <column-instance column='[LogRecorded]' derivation='Quarter' name='[qr:LogRecorded:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Project_Count]' derivation='Sum' name='[sum:Project_Count:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[LogRecorded]' derivation='Year' name='[yr:LogRecorded:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' />
+              <lod column='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:UserName:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[sum:Project_Count:qk]</rows>
+        <cols>([sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[yr:LogRecorded:ok] / ([sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[qr:LogRecorded:ok] / ([sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[mn:LogRecorded:ok] / [sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[dy:LogRecorded:ok])))</cols>
+      </table>
+      <simple-id uuid='{BB82DE48-1CC8-417E-90DA-849D47A62FC5}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Dashboard 2'>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <datasources>
+        <datasource name='Parameters' />
+        <datasource caption='User Monthly Activity (SPMIT)' name='sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f' />
+      </datasources>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='ServerId' datatype='integer' default-format='N' name='[Parameter 1]' param-domain-type='any' role='measure' type='quantitative' value='1'>
+          <calculation class='tableau' formula='1' />
+        </column>
+      </datasource-dependencies>
+      <datasource-dependencies datasource='sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f'>
+        <column aggregation='Year' datatype='date' default-type='ordinal' layered='true' name='[LogRecorded]' pivot='key' role='dimension' type='ordinal' user-datatype='date' visual-totals='Default' />
+        <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[ProjectName]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+        <column-instance column='[LogRecorded]' derivation='Day' name='[dy:LogRecorded:ok]' pivot='key' type='ordinal' />
+        <column-instance column='[ProjectName]' derivation='None' name='[none:ProjectName:nk]' pivot='key' type='nominal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='4' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98000' id='7' param='horz' type='layout-flow' w='98400' x='800' y='1000'>
+            <zone h='98000' id='5' type='layout-basic' w='82400' x='800' y='1000'>
+              <zone h='49000' id='3' name='Track User Activity' w='82400' x='800' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='49000' id='11' name='Users Monthly Activity' w='82400' x='800' y='50000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone fixed-size='160' h='98000' id='6' is-fixed='true' param='vert' type='layout-flow' w='16000' x='83200' y='1000'>
+              <zone h='15250' id='8' name='Track User Activity' pane-specification-id='0' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]' type='color' w='16000' x='83200' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='5250' id='9' name='Track User Activity' pane-specification-id='0' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[sum:User_Count_Percent:qk]' type='size' w='16000' x='83200' y='16250'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='6000' id='10' mode='type_in' param='[Parameters].[Parameter 1]' type='paramctrl' w='16000' x='83200' y='21500'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='8125' id='12' name='Users Monthly Activity' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[dy:LogRecorded:ok]' type='filter' w='16000' x='83200' y='27500'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='8125' id='13' name='Users Monthly Activity' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='filter' w='16000' x='83200' y='35625'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='2750' id='14' name='Users Monthly Activity' pane-specification-id='0' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='color' w='16000' x='83200' y='43750'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='1000' minheight='1000' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='20' type='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98000' id='21' param='vert' type='layout-flow' w='98400' x='800' y='1000'>
+                <zone fixed-size='280' h='49000' id='3' is-fixed='true' name='Track User Activity' w='82400' x='800' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='15250' id='8' name='Track User Activity' pane-specification-id='0' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]' type='color' w='16000' x='83200' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='5250' id='9' name='Track User Activity' pane-specification-id='0' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[sum:User_Count_Percent:qk]' type='size' w='16000' x='83200' y='16250'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='6000' id='10' mode='type_in' param='[Parameters].[Parameter 1]' type='paramctrl' w='16000' x='83200' y='21500'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='8125' id='12' mode='checkdropdown' name='Users Monthly Activity' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[dy:LogRecorded:ok]' type='filter' w='16000' x='83200' y='27500'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='8125' id='13' mode='checkdropdown' name='Users Monthly Activity' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='filter' w='16000' x='83200' y='35625'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='49000' id='11' is-fixed='true' name='Users Monthly Activity' w='82400' x='800' y='50000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='2750' id='14' name='Users Monthly Activity' pane-specification-id='0' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='color' w='16000' x='83200' y='43750'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{E23F3F64-CB17-4F57-BC83-ABC62F284B64}' />
+    </dashboard>
+    <dashboard name='User Commit View'>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <datasources>
+        <datasource name='Parameters' />
+        <datasource caption='User Monthly Activity (SPMIT)' name='sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f' />
+      </datasources>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='ServerId' datatype='integer' default-format='N' name='[Parameter 1]' param-domain-type='any' role='measure' type='quantitative' value='1'>
+          <calculation class='tableau' formula='1' />
+        </column>
+      </datasource-dependencies>
+      <datasource-dependencies datasource='sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f'>
+        <column aggregation='Year' datatype='date' default-type='ordinal' layered='true' name='[LogRecorded]' pivot='key' role='dimension' type='ordinal' user-datatype='date' visual-totals='Default' />
+        <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[ProjectName]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+        <column-instance column='[LogRecorded]' derivation='Day' name='[dy:LogRecorded:ok]' pivot='key' type='ordinal' />
+        <column-instance column='[ProjectName]' derivation='None' name='[none:ProjectName:nk]' pivot='key' type='nominal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='4' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98000' id='7' param='horz' type='layout-flow' w='98400' x='800' y='1000'>
+            <zone h='98000' id='5' type='layout-basic' w='82400' x='800' y='1000'>
+              <zone h='49000' id='12' name='Users Monthly Activity' w='82400' x='800' y='50000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='49000' id='17' name='Track User Activity' w='82400' x='800' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone fixed-size='160' h='98000' id='6' is-fixed='true' param='vert' type='layout-flow' w='16000' x='83200' y='1000'>
+              <zone h='6000' id='11' mode='type_in' param='[Parameters].[Parameter 1]' type='paramctrl' w='16000' x='83200' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='8125' id='13' name='Users Monthly Activity' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[dy:LogRecorded:ok]' type='filter' w='16000' x='83200' y='7000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='8125' id='14' name='Users Monthly Activity' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='filter' w='16000' x='83200' y='15125'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='2750' id='15' name='Users Monthly Activity' pane-specification-id='0' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='color' w='16000' x='83200' y='23250'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='15250' id='18' name='Track User Activity' pane-specification-id='0' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]' type='color' w='16000' x='83200' y='26000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='5250' id='19' name='Track User Activity' pane-specification-id='0' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[sum:User_Count_Percent:qk]' type='size' w='16000' x='83200' y='41250'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='6000' id='20' name='Track User Activity' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]' type='highlighter' w='16000' x='83200' y='46500'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='1050' minheight='1050' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='33' type='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98000' id='34' param='vert' type='layout-flow' w='98400' x='800' y='1000'>
+                <zone h='6000' id='20' name='Track User Activity' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]' type='highlighter' w='16000' x='83200' y='46500'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='49000' id='17' is-fixed='true' name='Track User Activity' w='82400' x='800' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='15250' id='18' name='Track User Activity' pane-specification-id='0' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]' type='color' w='16000' x='83200' y='26000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='5250' id='19' name='Track User Activity' pane-specification-id='0' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[sum:User_Count_Percent:qk]' type='size' w='16000' x='83200' y='41250'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='6000' id='11' mode='type_in' param='[Parameters].[Parameter 1]' type='paramctrl' w='16000' x='83200' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='8125' id='13' mode='checkdropdown' name='Users Monthly Activity' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[dy:LogRecorded:ok]' type='filter' w='16000' x='83200' y='7000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='8125' id='14' mode='checkdropdown' name='Users Monthly Activity' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='filter' w='16000' x='83200' y='15125'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='49000' id='12' is-fixed='true' name='Users Monthly Activity' w='82400' x='800' y='50000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='2750' id='15' name='Users Monthly Activity' pane-specification-id='0' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='color' w='16000' x='83200' y='23250'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{E537F909-0B89-4894-B2EE-03F23D9577C6}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='93'>
+    <window class='worksheet' name='Uniqe IP Address'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[sqlproxy.0yh35tn07553wj1009b5w05d1ye9].[none:ServerIP_Address:nk]' type='color' />
+            <card pane-specification-id='0' param='[sqlproxy.0yh35tn07553wj1009b5w05d1ye9].[pcto:sum:ServerIP_Address_Count:qk]' type='size' />
+            <card AVG='true' KURTOSIS='false' MAX='true' MEDIAN='true' MIN='true' QUART1='false' QUART3='false' SKEWNESS='false' STDEV='false' SUM='true' type='summary' />
+            <card mode='type_in' param='[Parameters].[Parameter 1]' type='parameter' />
+          </strip>
+        </edge>
+        <edge name='bottom'>
+          <strip size='96'>
+            <card type='caption' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{D469557F-4B4F-4663-BB22-15216B64363B}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Track User Activity'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]' type='color' />
+            <card pane-specification-id='0' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[sum:User_Count_Percent:qk]' type='size' />
+            <card AVG='true' KURTOSIS='false' MAX='true' MEDIAN='true' MIN='true' QUART1='false' QUART3='false' SKEWNESS='false' STDEV='false' SUM='true' type='summary' />
+            <card mode='type_in' param='[Parameters].[Parameter 1]' type='parameter' />
+          </strip>
+        </edge>
+        <edge name='bottom'>
+          <strip size='96'>
+            <card type='caption' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{D41292D4-AD34-4823-93FB-CAD7DA97FE5C}' />
+    </window>
+    <window class='worksheet' name='Users Monthly Activity'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[dy:LogRecorded:ok]' type='filter' />
+            <card param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='filter' />
+            <card pane-specification-id='0' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='color' />
+            <card AVG='true' KURTOSIS='false' MAX='true' MEDIAN='true' MIN='true' QUART1='false' QUART3='false' SKEWNESS='false' STDEV='false' SUM='true' type='summary' />
+            <card mode='type_in' param='[Parameters].[Parameter 1]' type='parameter' />
+          </strip>
+        </edge>
+        <edge name='bottom'>
+          <strip size='96'>
+            <card type='caption' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{C67497A6-49CA-4866-9368-5747DA7DC2F6}' />
+    </window>
+    <window class='worksheet' name='Users Monthly Activity-2'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{B3385C0E-7841-4FB9-8282-80BB7A335B8C}' />
+    </window>
+    <window class='dashboard' name='User Commit View'>
+      <viewpoints>
+        <viewpoint name='Track User Activity'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Users Monthly Activity'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='12' />
+      <device-preview visible='true'>
+        <device name='Medium Desktop Monitor' type='Desktop' />
+      </device-preview>
+      <simple-id uuid='{09D3C556-3DE9-41F7-A739-641EA19273E5}' />
+    </window>
+    <window class='dashboard' name='Dashboard 2'>
+      <viewpoints>
+        <viewpoint name='Track User Activity'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Users Monthly Activity'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='3' />
+      <simple-id uuid='{31049211-0FC5-4672-9AB7-2B75EFDDC59E}' />
+    </window>
+  </windows>
+</workbook>

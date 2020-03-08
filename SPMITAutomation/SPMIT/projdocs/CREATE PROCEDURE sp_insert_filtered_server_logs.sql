@@ -49,6 +49,8 @@ SET XACT_ABORT ON;
 								EventId INT,
 								EventCategory INT,
 								EventSubSources nvarchar(MAX),
+								UserName  nvarchar(400),
+								ProjectName  nvarchar(400),
 								EventDescriptions nvarchar(MAX))
 			DECLARE @fieldsep char(1) = '|';
 			DECLARE @recordsep char(1) = char(10);
@@ -74,6 +76,8 @@ SET XACT_ABORT ON;
 											EventId,
 											EventCategory,
 											EventSubSources,
+											UserName,
+											ProjectName,
 											EventDescriptions,
 											CreatedDate,
 											CreatedBy
@@ -86,6 +90,8 @@ SET XACT_ABORT ON;
 											EventId,
 											EventCategory,
 											EventSubSources,
+											UserName,
+											ProjectName,
 											EventDescriptions,											
 											GETDATE() AS CreatedDate, 
 											@UserId AS CreatedBy
@@ -93,6 +99,28 @@ SET XACT_ABORT ON;
 									ORDER BY LogRecorded
 						
 			DROP TABLE #tmp
+
+			DELETE FROM ProjectInformation WHERE ServerId = @ServerId
+
+			INSERT INTO ProjectInformation (	ServerId,
+												UserName,
+												ProjectName,
+												CreatedDate,
+												CreatedBy)
+										SELECT	@ServerId AS ServerId,
+												UserName,
+												ProjectName,
+												GETDATE() AS CreatedDate,
+												@UserId AS CreatedBy
+										FROM	(	SELECT	DISTINCT UserName, ProjectName 
+													FROM	ServerLogs_Filtered 
+													WHERE	UserName NOT IN ('users','assets','uploads','admin','dashboard', '''', '-')
+															AND (UserName IS NOT NULL OR UserName <> '')
+															AND (ProjectName IS NOT NULL OR ProjectName <> '')
+															AND ServerId = @ServerId
+												) TEMP
+										ORDER BY UserName, ProjectName
+
 
 			SELECT  @IsTransactionSuccessfull=1, @TransactionMessage = 'Successful'
 

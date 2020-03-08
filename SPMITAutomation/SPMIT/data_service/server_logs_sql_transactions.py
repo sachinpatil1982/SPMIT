@@ -19,6 +19,7 @@ log = logging.getLogger('Common_Logs_Sql_Transactions.Py')
 log.setLevel(log_error_level)
 
 class Class_Common_Logs_Sql_Transactions:
+
     def __init__(self, server_id, user_id):
             #log.debug('{0}||{1}||Common_Logs_Sql_Transactions Initiatied' .format(server_id, user_id))
             self.server_id = server_id
@@ -28,7 +29,7 @@ class Class_Common_Logs_Sql_Transactions:
 #/***************************************************************************
 # Save text in Database 
 #/***************************************************************************
-    def save_server_logs_in_db(self, server_log_file_path, isfiltered):
+    def save_server_logs_in_db(self, server_log_file_path, filter_type):
         try:
             # self.server_log_file_path = server_log_file_path
             print(server_log_file_path)
@@ -37,10 +38,12 @@ class Class_Common_Logs_Sql_Transactions:
             sqlDBConn = Class_Ms_Sql_Helper_Obj.getConn()
             sqlCursor = sqlDBConn.cursor()
             sp_name = ""
-            if (isfiltered == 1):
+            if (filter_type == "plain"):
+                sp_name = "sp_insert_server_logs"
+            elif (filter_type == "cleansing"):
                 sp_name = "sp_insert_filtered_server_logs"
             else:
-                sp_name = "sp_insert_server_logs"        
+                sp_name = "N/A"        
             sql = """\
             DECLARE @IsTransactionSuccessfull_value INT;
             DECLARE @TransactionMessage_value nvarchar(400);

@@ -1,31 +1,571 @@
 <?xml version='1.0' encoding='utf-8' ?>
 
 <!-- build 20193.19.1017.1259                               -->
-<workbook original-version='18.1' source-build='2019.3.1 (20193.19.1017.1259)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+<workbook original-version='18.1' source-build='2019.3.1 (20193.19.1017.1259)' source-platform='win' version='18.1' xml:base='https://prod-useast-a.online.tableau.com' xmlns:user='http://www.tableausoftware.com/xml/user'>
   <document-format-change-manifest>
+    <AutoCreateAndUpdateDSDPhoneLayouts ignorable='true' predowngraded='true' />
+    <ISO8601DefaultCalendarPref ignorable='true' predowngraded='true' />
+    <NavigationAction />
+    <ParameterAction ignorable='true' predowngraded='true' />
     <SheetIdentifierTracking ignorable='true' predowngraded='true' />
     <WindowsPersistSimpleIdentifiers />
+    <ZoneBackgroundTransparency />
   </document-format-change-manifest>
+  <repository-location id='spmit' path='/t/spmithub/workbooks' revision='1.3' site='spmithub' />
   <preferences>
     <preference name='ui.encoding.shelf.height' value='24' />
     <preference name='ui.shelf.height' value='26' />
   </preferences>
+  <style-theme name='modern' />
   <datasources>
-    <datasource caption='Fetch ServerLogs_IP_Address (SPMIT)' inline='true' name='federated.0xgdgp70jat98o16d7i4i0ra3uo3' version='18.1'>
-      <connection class='federated'>
-        <named-connections>
-          <named-connection caption='EC2AMAZ-848AN2Q' name='sqlserver.1bdlhtx0ic095g12putlz0l1ksnl'>
-            <connection authentication='sqlserver' class='sqlserver' dbname='SPMIT' odbc-native-protocol='yes' one-time-sql='' server='EC2AMAZ-848AN2Q' username='spmit_admin' />
-          </named-connection>
-        </named-connections>
-        <relation connection='sqlserver.1bdlhtx0ic095g12putlz0l1ksnl' name='sp_rep_server_logs_ip_address' stored-proc='[dbo].[sp_rep_server_logs_ip_address]' type='stored-proc' />
+    <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>
+      <aliases enabled='yes' />
+      <column caption='ServerId' datatype='integer' default-format='N' name='[Parameter 1]' param-domain-type='any' role='measure' type='quantitative' value='1'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='UserName' datatype='string' name='[Parameter 2]' param-domain-type='any' role='measure' type='nominal' value='&quot;&quot;'>
+        <calculation class='tableau' formula='&quot;&quot;' />
+      </column>
+    </datasource>
+    <datasource caption='Fetch ServerLogs_IP_Address (SPMIT)' inline='true' name='sqlproxy.0yh35tn07553wj1009b5w05d1ye9' version='18.1'>
+      <repository-location id='FetchServerLogs_IP_AddressSPMIT' path='/t/spmithub/datasources' revision='1.0' site='spmithub' />
+      <connection channel='https' class='sqlproxy' dbname='FetchServerLogs_IP_AddressSPMIT' directory='/dataserver' port='443' server='prod-useast-a.online.tableau.com' server-oauth='' username='' workgroup-auth-mode='prompt'>
+        <relation name='sqlproxy' table='[sqlproxy]' type='table' />
+        <calculations>
+          <calculation column='[Number of Records]' formula='1' />
+        </calculations>
         <metadata-records>
+          <metadata-record class='measure'>
+            <remote-name>Number of Records</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[Number of Records]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>Number of Records</remote-alias>
+            <ordinal>5</ordinal>
+            <layered>true</layered>
+            <caption>Number of Records</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+              <attribute datatype='string' name='formula'>&quot;1&quot;</attribute>
+            </attributes>
+          </metadata-record>
           <metadata-record class='column'>
             <remote-name>ServerIP_Address</remote-name>
-            <remote-type>130</remote-type>
+            <remote-type>129</remote-type>
             <local-name>[ServerIP_Address]</local-name>
-            <parent-name>[sp_rep_server_logs_ip_address]</parent-name>
+            <parent-name>[sqlproxy]</parent-name>
             <remote-alias>ServerIP_Address</remote-alias>
+            <ordinal>0</ordinal>
+            <layered>true</layered>
+            <caption>ServerIP Address</caption>
+            <family>sp_rep_server_logs_ip_address</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LROOT' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>ServerIP_Address_Count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ServerIP_Address_Count]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>ServerIP_Address_Count</remote-alias>
+            <ordinal>1</ordinal>
+            <layered>true</layered>
+            <caption>ServerIP Address Count</caption>
+            <family>sp_rep_server_logs_ip_address</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>ServerIP_Address_Count_Percent</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[ServerIP_Address_Count_Percent]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>ServerIP_Address_Count_Percent</remote-alias>
+            <ordinal>2</ordinal>
+            <layered>true</layered>
+            <family>sp_rep_server_logs_ip_address</family>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='boolean' name='CAP_CREATE_TEMP_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_ALWAYS_USE_LOCAL_MAPPING_TABLES'>false</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_PREFER_LOCAL_MAPPING_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_REMOTE_MAPPING_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_CASE_INSENSITIVE_CONTAINS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_EXTRACT_RANGES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SORT_BY'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUBQUERIES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUBQUERY_QUERY_CONTEXT'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUPPORTS_LODJOINS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUPPORT_ANALYTIC_FUNCTIONS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_TOP_N'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_USE_QUERY_FUSION'>true</attribute>
+              <attribute datatype='boolean' name='CAP_SUPPORTS_SPLIT_FROM_LEFT'>true</attribute>
+              <attribute datatype='boolean' name='CAP_SUPPORTS_SPLIT_FROM_RIGHT'>true</attribute>
+              <attribute datatype='integer' name='charset'>0</attribute>
+              <attribute datatype='string' name='collation'>&quot;binary&quot;</attribute>
+              <attribute datatype='string' name='datasource'>&quot;&lt;?xml version=&apos;1.0&apos; encoding=&apos;utf-8&apos; ?&gt;&#10;&#10;&lt;datasource :source-version=&apos;18.1&apos; formatted-name=&apos;Fetch ServerLogs_IP_Address (SPMIT)&apos; inline=&apos;true&apos; version=&apos;18.1&apos; xml:base=&apos;https://prod-useast-a.online.tableau.com&apos; xmlns:user=&apos;http://www.tableausoftware.com/xml/user&apos;&gt;&#10;  &lt;repository-location id=&apos;FetchServerLogs_IP_AddressSPMIT&apos; path=&apos;/t/spmithub/datasources&apos; revision=&apos;1.0&apos; site=&apos;spmithub&apos; /&gt;&#10;  &lt;connection channel=&apos;https&apos; class=&apos;sqlproxy&apos; dbname=&apos;FetchServerLogs_IP_AddressSPMIT&apos; directory=&apos;/dataserver&apos; port=&apos;443&apos; server=&apos;prod-useast-a.online.tableau.com&apos;&gt;&#10;    &lt;relation name=&apos;sqlproxy&apos; table=&apos;[sqlproxy]&apos; type=&apos;table&apos; /&gt;&#10;    &lt;cols&gt;&#10;      &lt;map key=&apos;[Number of Records]&apos; value=&apos;[sqlproxy].[Number of Records]&apos; /&gt;&#10;      &lt;map key=&apos;[ServerIP_Address]&apos; value=&apos;[sqlproxy].[ServerIP_Address]&apos; /&gt;&#10;      &lt;map key=&apos;[ServerIP_Address_Count]&apos; value=&apos;[sqlproxy].[ServerIP_Address_Count]&apos; /&gt;&#10;      &lt;map key=&apos;[ServerIP_Address_Count_Percent]&apos; value=&apos;[sqlproxy].[ServerIP_Address_Count_Percent]&apos; /&gt;&#10;    &lt;/cols&gt;&#10;  &lt;/connection&gt;&#10;  &lt;aliases enabled=&apos;yes&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[Number of Records]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; user:auto-column=&apos;numrec&apos; visual-totals=&apos;Default&apos;&gt;&#10;    &lt;calculation class=&apos;tableau&apos; formula=&apos;1&apos; /&gt;&#10;  &lt;/column&gt;&#10;  &lt;column aggregation=&apos;Count&apos; caption=&apos;ServerIP Address&apos; datatype=&apos;string&apos; default-type=&apos;nominal&apos; name=&apos;[ServerIP_Address]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;nominal&apos; user-datatype=&apos;string&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; caption=&apos;ServerIP Address Count&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[ServerIP_Address_Count]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;layout dim-ordering=&apos;alphabetic&apos; dim-percentage=&apos;0.32199&apos; measure-ordering=&apos;alphabetic&apos; measure-percentage=&apos;0.418848&apos; parameter-percentage=&apos;0.259162&apos; show-structure=&apos;true&apos; /&gt;&#10;  &lt;semantic-values&gt;&#10;    &lt;semantic-value key=&apos;[Country].[Name]&apos; value=&apos;&amp;quot;United States&amp;quot;&apos; /&gt;&#10;  &lt;/semantic-values&gt;&#10;&lt;/datasource&gt;&#10;&quot;</attribute>
+              <attribute datatype='string' name='dialect-definition'>&quot;&lt;dialect-definition&gt;&#10;  &lt;primary-dialect class=&apos;hyper&apos; version=&apos;0.0.0&apos;&gt;&#10;  &lt;/primary-dialect&gt;&#10;&lt;/dialect-definition&gt;&#10;&quot;</attribute>
+              <attribute datatype='boolean' name='extract-active'>true</attribute>
+              <attribute datatype='boolean' name='fast-get-server-time'>true</attribute>
+              <attribute datatype='string' name='update-time'>&quot;3/8/2020 10:34:33 AM&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <overridable-settings>
+        <date-options fiscal-year-start='january' start-of-week='sunday' />
+        <default-date-format />
+        <default-calendar-type>Gregorian</default-calendar-type>
+      </overridable-settings>
+      <aliases enabled='yes' />
+      <column aggregation='Sum' datatype='integer' default-type='quantitative' layered='true' name='[Number of Records]' pivot='key' role='measure' type='quantitative' user-datatype='integer' user:auto-column='numrec' visual-totals='Default'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column aggregation='Count' caption='ServerIP Address' datatype='string' default-type='nominal' layered='true' name='[ServerIP_Address]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column aggregation='Sum' caption='ServerIP Address Count' datatype='integer' default-type='quantitative' layered='true' name='[ServerIP_Address_Count]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Sum' datatype='real' default-type='quantitative' layered='true' name='[ServerIP_Address_Count_Percent]' pivot='key' role='measure' type='quantitative' user-datatype='real' visual-totals='Default' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.293629' measure-ordering='alphabetic' measure-percentage='0.412742' parameter-percentage='0.293629' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+    <datasource caption='Track User Activity (SPMIT)' inline='true' name='sqlproxy.0yt1bqq026y0n414jcxc91gninjs' version='18.1'>
+      <repository-location derived-from='/datasources/TrackUserActivitySPMIT?rev=1.0' id='TrackUserActivitySPMIT' path='/t/spmithub/datasources' revision='1.1' site='spmithub' />
+      <connection channel='https' class='sqlproxy' dbname='TrackUserActivitySPMIT' directory='/dataserver' port='443' server='prod-useast-a.online.tableau.com' username=''>
+        <relation name='sqlproxy' table='[sqlproxy]' type='table' />
+        <calculations>
+          <calculation column='[Number of Records]' formula='1' />
+        </calculations>
+        <metadata-records>
+          <metadata-record class='measure'>
+            <remote-name>Number of Records</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[Number of Records]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>Number of Records</remote-alias>
+            <ordinal>5</ordinal>
+            <layered>true</layered>
+            <caption>Number of Records</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+              <attribute datatype='string' name='formula'>&quot;1&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>UserName</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[UserName]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>UserName</remote-alias>
+            <ordinal>0</ordinal>
+            <layered>true</layered>
+            <family>sp_rep_server_logs_track_user_activity</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LROOT' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>User_Count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[User_Count]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>User_Count</remote-alias>
+            <ordinal>1</ordinal>
+            <layered>true</layered>
+            <family>sp_rep_server_logs_track_user_activity</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>User_Count_Percent</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[User_Count_Percent]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>User_Count_Percent</remote-alias>
+            <ordinal>2</ordinal>
+            <layered>true</layered>
+            <family>sp_rep_server_logs_track_user_activity</family>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='boolean' name='CAP_CREATE_TEMP_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_ALWAYS_USE_LOCAL_MAPPING_TABLES'>false</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_PREFER_LOCAL_MAPPING_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_REMOTE_MAPPING_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_CASE_INSENSITIVE_CONTAINS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_EXTRACT_RANGES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SORT_BY'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUBQUERIES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUBQUERY_QUERY_CONTEXT'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUPPORTS_LODJOINS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUPPORT_ANALYTIC_FUNCTIONS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_TOP_N'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_USE_QUERY_FUSION'>true</attribute>
+              <attribute datatype='boolean' name='CAP_SUPPORTS_SPLIT_FROM_LEFT'>true</attribute>
+              <attribute datatype='boolean' name='CAP_SUPPORTS_SPLIT_FROM_RIGHT'>true</attribute>
+              <attribute datatype='integer' name='charset'>0</attribute>
+              <attribute datatype='string' name='collation'>&quot;binary&quot;</attribute>
+              <attribute datatype='string' name='datasource'>&quot;&lt;?xml version=&apos;1.0&apos; encoding=&apos;utf-8&apos; ?&gt;&#10;&#10;&lt;datasource :source-version=&apos;18.1&apos; formatted-name=&apos;Track User Activity (SPMIT)&apos; inline=&apos;true&apos; version=&apos;18.1&apos; xml:base=&apos;https://prod-useast-a.online.tableau.com&apos; xmlns:user=&apos;http://www.tableausoftware.com/xml/user&apos;&gt;&#10;  &lt;repository-location derived-from=&apos;/datasources/TrackUserActivitySPMIT?rev=1.0&apos; id=&apos;TrackUserActivitySPMIT&apos; path=&apos;/t/spmithub/datasources&apos; revision=&apos;1.1&apos; site=&apos;spmithub&apos; /&gt;&#10;  &lt;connection channel=&apos;https&apos; class=&apos;sqlproxy&apos; dbname=&apos;TrackUserActivitySPMIT&apos; directory=&apos;/dataserver&apos; port=&apos;443&apos; server=&apos;prod-useast-a.online.tableau.com&apos;&gt;&#10;    &lt;relation name=&apos;sqlproxy&apos; table=&apos;[sqlproxy]&apos; type=&apos;table&apos; /&gt;&#10;    &lt;cols&gt;&#10;      &lt;map key=&apos;[Number of Records]&apos; value=&apos;[sqlproxy].[Number of Records]&apos; /&gt;&#10;      &lt;map key=&apos;[UserName]&apos; value=&apos;[sqlproxy].[UserName]&apos; /&gt;&#10;      &lt;map key=&apos;[User_Count]&apos; value=&apos;[sqlproxy].[User_Count]&apos; /&gt;&#10;      &lt;map key=&apos;[User_Count_Percent]&apos; value=&apos;[sqlproxy].[User_Count_Percent]&apos; /&gt;&#10;    &lt;/cols&gt;&#10;  &lt;/connection&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[Number of Records]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; user:auto-column=&apos;numrec&apos; visual-totals=&apos;Default&apos;&gt;&#10;    &lt;calculation class=&apos;tableau&apos; formula=&apos;1&apos; /&gt;&#10;  &lt;/column&gt;&#10;  &lt;column aggregation=&apos;Count&apos; datatype=&apos;string&apos; default-type=&apos;nominal&apos; name=&apos;[UserName]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;nominal&apos; user-datatype=&apos;string&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column-instance column=&apos;[UserName]&apos; derivation=&apos;None&apos; name=&apos;[none:UserName:nk]&apos; pivot=&apos;key&apos; type=&apos;nominal&apos; /&gt;&#10;  &lt;layout dim-ordering=&apos;alphabetic&apos; dim-percentage=&apos;0.296399&apos; measure-ordering=&apos;alphabetic&apos; measure-percentage=&apos;0.409972&apos; parameter-percentage=&apos;0.293629&apos; show-structure=&apos;true&apos; /&gt;&#10;  &lt;style&gt;&#10;    &lt;style-rule element=&apos;mark&apos;&gt;&#10;      &lt;encoding attr=&apos;color&apos; field=&apos;[none:UserName:nk]&apos; type=&apos;palette&apos;&gt;&#10;        &lt;map to=&apos;\#4e79a7&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;aaa&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#59a14f&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;ccc&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#76b7b2&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;abc-vvv&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#e15759&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;abc-bg&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#f28e2b&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;aaa-ooo&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;      &lt;/encoding&gt;&#10;    &lt;/style-rule&gt;&#10;  &lt;/style&gt;&#10;  &lt;semantic-values&gt;&#10;    &lt;semantic-value key=&apos;[Country].[Name]&apos; value=&apos;&amp;quot;United States&amp;quot;&apos; /&gt;&#10;  &lt;/semantic-values&gt;&#10;  &lt;datasource-dependencies datasource=&apos;Parameters&apos;&gt;&#10;    &lt;column caption=&apos;ServerId&apos; datatype=&apos;integer&apos; default-format=&apos;N&apos; name=&apos;[Parameter 1]&apos; param-domain-type=&apos;any&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; value=&apos;1&apos;&gt;&#10;      &lt;calculation class=&apos;tableau&apos; formula=&apos;1&apos; /&gt;&#10;    &lt;/column&gt;&#10;  &lt;/datasource-dependencies&gt;&#10;&lt;/datasource&gt;&#10;&quot;</attribute>
+              <attribute datatype='string' name='dialect-definition'>&quot;&lt;dialect-definition&gt;&#10;  &lt;primary-dialect class=&apos;hyper&apos; version=&apos;0.0.0&apos;&gt;&#10;  &lt;/primary-dialect&gt;&#10;&lt;/dialect-definition&gt;&#10;&quot;</attribute>
+              <attribute datatype='boolean' name='extract-active'>true</attribute>
+              <attribute datatype='boolean' name='fast-get-server-time'>true</attribute>
+              <attribute datatype='string' name='update-time'>&quot;3/8/2020 2:44:49 PM&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <overridable-settings>
+        <date-options fiscal-year-start='january' start-of-week='sunday' />
+        <default-date-format />
+        <default-calendar-type>Gregorian</default-calendar-type>
+      </overridable-settings>
+      <column aggregation='Sum' datatype='integer' default-type='quantitative' layered='true' name='[Number of Records]' pivot='key' role='measure' type='quantitative' user-datatype='integer' user:auto-column='numrec' visual-totals='Default'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[UserName]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column aggregation='Sum' datatype='integer' default-type='quantitative' layered='true' name='[User_Count]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Sum' datatype='real' default-type='quantitative' layered='true' name='[User_Count_Percent]' pivot='key' role='measure' type='quantitative' user-datatype='real' visual-totals='Default' />
+      <column-instance column='[UserName]' derivation='None' name='[none:UserName:nk]' pivot='key' type='nominal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.276471' measure-ordering='alphabetic' measure-percentage='0.391176' parameter-percentage='0.332353' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:UserName:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;aaa&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;ccc&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;abc-vvv&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;abc-bg&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;aaa-ooo&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+    <datasource caption='User Monthly Activity (SPMIT)' inline='true' name='sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f' version='18.1'>
+      <repository-location id='UserMonthlyActivitySPMIT' path='/t/spmithub/datasources' revision='1.0' site='spmithub' />
+      <connection channel='https' class='sqlproxy' dbname='UserMonthlyActivitySPMIT' directory='/dataserver' port='443' server='prod-useast-a.online.tableau.com' username=''>
+        <relation name='sqlproxy' table='[sqlproxy]' type='table' />
+        <calculations>
+          <calculation column='[Number of Records]' formula='1' />
+        </calculations>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>LogRecorded</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[LogRecorded]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>LogRecorded</remote-alias>
+            <ordinal>2</ordinal>
+            <layered>true</layered>
+            <family>sp_rep_server_logs_track_user_project_activity</family>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>1</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>Number of Records</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[Number of Records]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>Number of Records</remote-alias>
+            <ordinal>6</ordinal>
+            <layered>true</layered>
+            <caption>Number of Records</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+              <attribute datatype='string' name='formula'>&quot;1&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ProjectName</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[ProjectName]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>ProjectName</remote-alias>
+            <ordinal>1</ordinal>
+            <layered>true</layered>
+            <family>sp_rep_server_logs_track_user_project_activity</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LROOT' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>Project_Count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Project_Count]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>Project_Count</remote-alias>
+            <ordinal>3</ordinal>
+            <layered>true</layered>
+            <family>sp_rep_server_logs_track_user_project_activity</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>UserName</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[UserName]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>UserName</remote-alias>
+            <ordinal>0</ordinal>
+            <layered>true</layered>
+            <family>sp_rep_server_logs_track_user_project_activity</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LROOT' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='boolean' name='CAP_CREATE_TEMP_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_ALWAYS_USE_LOCAL_MAPPING_TABLES'>false</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_PREFER_LOCAL_MAPPING_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_REMOTE_MAPPING_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_CASE_INSENSITIVE_CONTAINS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_EXTRACT_RANGES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SORT_BY'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUBQUERIES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUBQUERY_QUERY_CONTEXT'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUPPORTS_LODJOINS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUPPORT_ANALYTIC_FUNCTIONS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_TOP_N'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_USE_QUERY_FUSION'>true</attribute>
+              <attribute datatype='boolean' name='CAP_SUPPORTS_SPLIT_FROM_LEFT'>true</attribute>
+              <attribute datatype='boolean' name='CAP_SUPPORTS_SPLIT_FROM_RIGHT'>true</attribute>
+              <attribute datatype='integer' name='charset'>0</attribute>
+              <attribute datatype='string' name='collation'>&quot;binary&quot;</attribute>
+              <attribute datatype='string' name='datasource'>&quot;&lt;?xml version=&apos;1.0&apos; encoding=&apos;utf-8&apos; ?&gt;&#10;&#10;&lt;datasource :source-version=&apos;18.1&apos; formatted-name=&apos;User Monthly Activity (SPMIT)&apos; inline=&apos;true&apos; version=&apos;18.1&apos; xmlns:user=&apos;http://www.tableausoftware.com/xml/user&apos;&gt;&#10;  &lt;repository-location id=&apos;UserMonthlyActivitySPMIT&apos; path=&apos;/t/spmithub/datasources&apos; revision=&apos;1.0&apos; site=&apos;spmithub&apos; /&gt;&#10;  &lt;connection channel=&apos;https&apos; class=&apos;sqlproxy&apos; dbname=&apos;UserMonthlyActivitySPMIT&apos; directory=&apos;/dataserver&apos; port=&apos;443&apos; server=&apos;prod-useast-a.online.tableau.com&apos;&gt;&#10;    &lt;relation name=&apos;sqlproxy&apos; table=&apos;[sqlproxy]&apos; type=&apos;table&apos; /&gt;&#10;    &lt;cols&gt;&#10;      &lt;map key=&apos;[LogRecorded]&apos; value=&apos;[sqlproxy].[LogRecorded]&apos; /&gt;&#10;      &lt;map key=&apos;[Number of Records]&apos; value=&apos;[sqlproxy].[Number of Records]&apos; /&gt;&#10;      &lt;map key=&apos;[ProjectName]&apos; value=&apos;[sqlproxy].[ProjectName]&apos; /&gt;&#10;      &lt;map key=&apos;[Project_Count]&apos; value=&apos;[sqlproxy].[Project_Count]&apos; /&gt;&#10;      &lt;map key=&apos;[UserName]&apos; value=&apos;[sqlproxy].[UserName]&apos; /&gt;&#10;    &lt;/cols&gt;&#10;  &lt;/connection&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[Number of Records]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; user:auto-column=&apos;numrec&apos; visual-totals=&apos;Default&apos;&gt;&#10;    &lt;calculation class=&apos;tableau&apos; formula=&apos;1&apos; /&gt;&#10;  &lt;/column&gt;&#10;  &lt;column aggregation=&apos;Count&apos; datatype=&apos;string&apos; default-type=&apos;nominal&apos; name=&apos;[ProjectName]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;nominal&apos; user-datatype=&apos;string&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Count&apos; datatype=&apos;string&apos; default-type=&apos;nominal&apos; name=&apos;[UserName]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;nominal&apos; user-datatype=&apos;string&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column-instance column=&apos;[ProjectName]&apos; derivation=&apos;None&apos; name=&apos;[none:ProjectName:nk]&apos; pivot=&apos;key&apos; type=&apos;nominal&apos; /&gt;&#10;  &lt;group caption=&apos;Action (UserName)&apos; hidden=&apos;true&apos; name=&apos;[Action (UserName)]&apos; name-style=&apos;unqualified&apos; user:auto-column=&apos;sheet_link&apos;&gt;&#10;    &lt;groupfilter function=&apos;crossjoin&apos;&gt;&#10;      &lt;groupfilter function=&apos;level-members&apos; level=&apos;[UserName]&apos; /&gt;&#10;    &lt;/groupfilter&gt;&#10;  &lt;/group&gt;&#10;  &lt;layout dim-ordering=&apos;alphabetic&apos; dim-percentage=&apos;0.393352&apos; measure-ordering=&apos;alphabetic&apos; measure-percentage=&apos;0.33241&apos; parameter-percentage=&apos;0.274238&apos; show-structure=&apos;true&apos; /&gt;&#10;  &lt;style&gt;&#10;    &lt;style-rule element=&apos;mark&apos;&gt;&#10;      &lt;encoding attr=&apos;color&apos; field=&apos;[none:ProjectName:nk]&apos; type=&apos;palette&apos;&gt;&#10;        &lt;map to=&apos;\#17becf&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;outlier-ui&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#1f77b4&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;abctext&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#1f77b4&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;boundary_lines_ext&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#1f77b4&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;platform---sc-just4u-integration&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#1f77b4&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;ppp-Claims-Project&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#2ca02c&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;line_item_extractor&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#2ca02c&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;ress-web-app&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#7f7f7f&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;abc-python-common&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#7f7f7f&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;ui&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#8c564b&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;aaa_icd_processing&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#8c564b&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;session-manager&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#9467bd&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;ooo_stack&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#98df8a&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;aaa-ui-backend&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#9edae5&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;rule-engine&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#aec7e8&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;aaa_sg_poc_outlier_code&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#bcbd22&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;cku&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#c49c94&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;cz-arch&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#c5b0d5&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;connection-manager&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#c7c7c7&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;efile-bl&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#d62728&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;ooo_engine&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#dbdb8d&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;efile-dm&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#e377c2&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;aaa-sg-outlier&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#e377c2&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;sso&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#f7b6d2&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;cz-orchestrator&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#ff7f0e&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;header_info_extractor&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#ff7f0e&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;ress-app&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#ff7f0e&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;stp-calculator&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#ff9896&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;business-logic&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;        &lt;map to=&apos;\#ffbb78&apos;&gt;&#10;          &lt;bucket&gt;&amp;quot;aaa_sing_ml&amp;quot;&lt;/bucket&gt;&#10;        &lt;/map&gt;&#10;      &lt;/encoding&gt;&#10;    &lt;/style-rule&gt;&#10;  &lt;/style&gt;&#10;  &lt;semantic-values&gt;&#10;    &lt;semantic-value key=&apos;[Country].[Name]&apos; value=&apos;&amp;quot;United States&amp;quot;&apos; /&gt;&#10;  &lt;/semantic-values&gt;&#10;  &lt;datasource-dependencies datasource=&apos;Parameters&apos;&gt;&#10;    &lt;column caption=&apos;ServerId&apos; datatype=&apos;integer&apos; default-format=&apos;N&apos; name=&apos;[Parameter 1]&apos; param-domain-type=&apos;any&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; value=&apos;1&apos;&gt;&#10;      &lt;calculation class=&apos;tableau&apos; formula=&apos;1&apos; /&gt;&#10;    &lt;/column&gt;&#10;    &lt;column caption=&apos;UserName&apos; datatype=&apos;string&apos; name=&apos;[Parameter 2]&apos; param-domain-type=&apos;any&apos; role=&apos;measure&apos; type=&apos;nominal&apos; value=&apos;&amp;quot;aaa&amp;quot;&apos;&gt;&#10;      &lt;calculation class=&apos;tableau&apos; formula=&apos;&amp;quot;aaa&amp;quot;&apos; /&gt;&#10;    &lt;/column&gt;&#10;  &lt;/datasource-dependencies&gt;&#10;&lt;/datasource&gt;&#10;&quot;</attribute>
+              <attribute datatype='string' name='dialect-definition'>&quot;&lt;dialect-definition&gt;&#10;  &lt;primary-dialect class=&apos;hyper&apos; version=&apos;0.0.0&apos;&gt;&#10;  &lt;/primary-dialect&gt;&#10;&lt;/dialect-definition&gt;&#10;&quot;</attribute>
+              <attribute datatype='boolean' name='extract-active'>true</attribute>
+              <attribute datatype='boolean' name='fast-get-server-time'>true</attribute>
+              <attribute datatype='string' name='update-time'>&quot;3/8/2020 3:11:25 PM&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <overridable-settings>
+        <date-options fiscal-year-start='january' start-of-week='sunday' />
+        <default-date-format />
+        <default-calendar-type>Gregorian</default-calendar-type>
+      </overridable-settings>
+      <column aggregation='Year' datatype='date' default-type='ordinal' layered='true' name='[LogRecorded]' pivot='key' role='dimension' type='ordinal' user-datatype='date' visual-totals='Default' />
+      <column aggregation='Sum' datatype='integer' default-type='quantitative' layered='true' name='[Number of Records]' pivot='key' role='measure' type='quantitative' user-datatype='integer' user:auto-column='numrec' visual-totals='Default'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[ProjectName]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column aggregation='Sum' datatype='integer' default-type='quantitative' layered='true' name='[Project_Count]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[UserName]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column-instance column='[ProjectName]' derivation='None' name='[none:ProjectName:nk]' pivot='key' type='nominal' />
+      <group auto-hidden='true' caption='Action (UserName)' hidden='true' layered='true' name='[Action (UserName)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[UserName]' />
+        </groupfilter>
+      </group>
+      <layout dim-ordering='alphabetic' dim-percentage='0.397059' measure-ordering='alphabetic' measure-percentage='0.332353' parameter-percentage='0.270588' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:ProjectName:nk]' type='palette'>
+            <map to='#17becf'>
+              <bucket>&quot;outlier-ui&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;abctext&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;boundary_lines_ext&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;platform---sc-just4u-integration&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;ppp-Claims-Project&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;line_item_extractor&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;ress-web-app&quot;</bucket>
+            </map>
+            <map to='#7f7f7f'>
+              <bucket>&quot;abc-python-common&quot;</bucket>
+            </map>
+            <map to='#7f7f7f'>
+              <bucket>&quot;ui&quot;</bucket>
+            </map>
+            <map to='#8c564b'>
+              <bucket>&quot;aaa_icd_processing&quot;</bucket>
+            </map>
+            <map to='#8c564b'>
+              <bucket>&quot;session-manager&quot;</bucket>
+            </map>
+            <map to='#9467bd'>
+              <bucket>&quot;ooo_stack&quot;</bucket>
+            </map>
+            <map to='#98df8a'>
+              <bucket>&quot;aaa-ui-backend&quot;</bucket>
+            </map>
+            <map to='#9edae5'>
+              <bucket>&quot;rule-engine&quot;</bucket>
+            </map>
+            <map to='#aec7e8'>
+              <bucket>&quot;aaa_sg_poc_outlier_code&quot;</bucket>
+            </map>
+            <map to='#bcbd22'>
+              <bucket>&quot;cku&quot;</bucket>
+            </map>
+            <map to='#c49c94'>
+              <bucket>&quot;cz-arch&quot;</bucket>
+            </map>
+            <map to='#c5b0d5'>
+              <bucket>&quot;connection-manager&quot;</bucket>
+            </map>
+            <map to='#c7c7c7'>
+              <bucket>&quot;efile-bl&quot;</bucket>
+            </map>
+            <map to='#d62728'>
+              <bucket>&quot;ooo_engine&quot;</bucket>
+            </map>
+            <map to='#dbdb8d'>
+              <bucket>&quot;efile-dm&quot;</bucket>
+            </map>
+            <map to='#e377c2'>
+              <bucket>&quot;aaa-sg-outlier&quot;</bucket>
+            </map>
+            <map to='#e377c2'>
+              <bucket>&quot;sso&quot;</bucket>
+            </map>
+            <map to='#f7b6d2'>
+              <bucket>&quot;cz-orchestrator&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;header_info_extractor&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;ress-app&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;stp-calculator&quot;</bucket>
+            </map>
+            <map to='#ff9896'>
+              <bucket>&quot;business-logic&quot;</bucket>
+            </map>
+            <map to='#ffbb78'>
+              <bucket>&quot;aaa_sing_ml&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+    <datasource caption='User Monthly Activity 2' inline='true' name='federated.0v9d1hk1xq81nd17qvk0g1d0wtin' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='EC2AMAZ-848AN2Q' name='sqlserver.09sudse0oejt3q12scxl70lka2lx'>
+            <connection authentication='sqlserver' class='sqlserver' dbname='SPMIT' minimum-driver-version='SQL Server Native Client 10.0' odbc-native-protocol='yes' one-time-sql='' server='EC2AMAZ-848AN2Q' username='spmit_admin' />
+          </named-connection>
+        </named-connections>
+        <relation connection='sqlserver.09sudse0oejt3q12scxl70lka2lx' name='sp_rep_server_logs_track_user_project_activity' stored-proc='[dbo].[sp_rep_server_logs_track_user_project_activity]' type='stored-proc'>
+          <actual-parameters>
+            <column name='@ServerId' ordinal='1' parameter='[Parameters].[Parameter 1]' value='1' />
+            <column name='@UserName' ordinal='2' parameter='[Parameters].[Parameter 2]' value='&quot;&quot;' />
+          </actual-parameters>
+        </relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>UserName</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[UserName]</local-name>
+            <parent-name>[sp_rep_server_logs_track_user_project_activity]</parent-name>
+            <remote-alias>UserName</remote-alias>
             <ordinal>1</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
@@ -39,12 +579,46 @@
             </attributes>
           </metadata-record>
           <metadata-record class='column'>
-            <remote-name>ServerIP_Address_Count</remote-name>
-            <remote-type>3</remote-type>
-            <local-name>[ServerIP_Address_Count]</local-name>
-            <parent-name>[sp_rep_server_logs_ip_address]</parent-name>
-            <remote-alias>ServerIP_Address_Count</remote-alias>
+            <remote-name>ProjectName</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[ProjectName]</local-name>
+            <parent-name>[sp_rep_server_logs_track_user_project_activity]</parent-name>
+            <remote-alias>ProjectName</remote-alias>
             <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>400</width>
+            <contains-null>false</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LogRecorded</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[LogRecorded]</local-name>
+            <parent-name>[sp_rep_server_logs_track_user_project_activity]</parent-name>
+            <remote-alias>LogRecorded</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+              <attribute datatype='boolean' name='TypeIsDateTime2orDate'>true</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Project_Count</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[Project_Count]</local-name>
+            <parent-name>[sp_rep_server_logs_track_user_project_activity]</parent-name>
+            <remote-alias>Project_Count</remote-alias>
+            <ordinal>4</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
             <precision>10</precision>
@@ -54,38 +628,117 @@
               <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
             </attributes>
           </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>ServerIP_Address_Count_Percent</remote-name>
-            <remote-type>131</remote-type>
-            <local-name>[ServerIP_Address_Count_Percent]</local-name>
-            <parent-name>[sp_rep_server_logs_ip_address]</parent-name>
-            <remote-alias>ServerIP_Address_Count_Percent</remote-alias>
-            <ordinal>3</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <precision>26</precision>
-            <scale>12</scale>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
-            </attributes>
-          </metadata-record>
         </metadata-records>
       </connection>
-      <aliases enabled='yes' />
       <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
         <calculation class='tableau' formula='1' />
       </column>
-      <column caption='ServerIP Address' datatype='string' name='[ServerIP_Address]' role='dimension' type='nominal' />
-      <column caption='ServerIP Address Count' datatype='integer' name='[ServerIP_Address_Count]' role='measure' type='quantitative' />
-      <layout dim-ordering='alphabetic' dim-percentage='0.451163' measure-ordering='alphabetic' measure-percentage='0.548837' show-structure='true' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.397059' measure-ordering='alphabetic' measure-percentage='0.332353' parameter-percentage='0.270588' show-structure='true' />
       <semantic-values>
         <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
       </semantic-values>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='ServerId' datatype='integer' default-format='N' name='[Parameter 1]' param-domain-type='any' role='measure' type='quantitative' value='1'>
+          <calculation class='tableau' formula='1' />
+        </column>
+        <column caption='UserName' datatype='string' name='[Parameter 2]' param-domain-type='any' role='measure' type='nominal' value='&quot;&quot;'>
+          <calculation class='tableau' formula='&quot;&quot;' />
+        </column>
+      </datasource-dependencies>
     </datasource>
   </datasources>
+  <actions>
+    <nav-action caption='Open User Montly Activity' name='[Action2]'>
+      <activation type='on-select' />
+      <source dashboard='User Commit View' type='sheet' worksheet='Track User Activity' />
+      <params>
+        <param name='sheet' value='User Commit View' />
+        <param name='single-select' value='' />
+      </params>
+    </nav-action>
+    <nav-action caption='GoToSheet1' name='[Action3]'>
+      <activation type='on-select' />
+      <source dashboard='Dashboard 2' type='sheet' worksheet='Track User Activity' />
+      <params>
+        <param name='sheet' value='Dashboard 2' />
+        <param name='single-select' value='' />
+      </params>
+    </nav-action>
+    <edit-parameter-action caption='UserName' name='[Action1]'>
+      <activation type='on-select' />
+      <source dashboard='User Commit View' type='sheet' worksheet='Track User Activity' />
+      <agg-type type='attr' />
+      <params>
+        <param name='source-field' value='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]' />
+        <param name='target-parameter' value='[Parameters].[Parameter 2]' />
+      </params>
+    </edit-parameter-action>
+    <edit-parameter-action caption='Parameter1' name='[Action4]'>
+      <activation type='on-select' />
+      <source dashboard='Dashboard 2' type='sheet' worksheet='Track User Activity' />
+      <agg-type type='attr' />
+      <params>
+        <param name='source-field' value='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]' />
+        <param name='target-parameter' value='[Parameters].[Parameter 2]' />
+      </params>
+    </edit-parameter-action>
+  </actions>
   <worksheets>
+    <worksheet name='Track User Activity'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Plot 2 - User&apos;s Last 30 days Activities </run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Track User Activity (SPMIT)' name='sqlproxy.0yt1bqq026y0n414jcxc91gninjs' />
+          </datasources>
+          <datasource-dependencies datasource='sqlproxy.0yt1bqq026y0n414jcxc91gninjs'>
+            <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[UserName]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+            <column aggregation='Sum' datatype='real' default-type='quantitative' layered='true' name='[User_Count_Percent]' pivot='key' role='measure' type='quantitative' user-datatype='real' visual-totals='Default' />
+            <column-instance column='[UserName]' derivation='None' name='[none:UserName:nk]' pivot='key' type='nominal' />
+            <column-instance column='[User_Count_Percent]' derivation='Sum' name='[sum:User_Count_Percent:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='cell-w' value='176' />
+            <format attr='cell-h' value='176' />
+            <format attr='cell' value='22' />
+            <format attr='cell-q' value='110' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Pie' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]' />
+              <wedge-size column='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[sum:User_Count_Percent:qk]' />
+              <size column='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[sum:User_Count_Percent:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.1754143238067627' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{6001F582-0048-4D51-AD82-79B30976000D}' />
+    </worksheet>
     <worksheet name='Uniqe IP Address'>
       <layout-options>
         <title>
@@ -97,13 +750,15 @@
       <table>
         <view>
           <datasources>
-            <datasource caption='Fetch ServerLogs_IP_Address (SPMIT)' name='federated.0xgdgp70jat98o16d7i4i0ra3uo3' />
+            <datasource caption='Fetch ServerLogs_IP_Address (SPMIT)' name='sqlproxy.0yh35tn07553wj1009b5w05d1ye9' />
           </datasources>
-          <datasource-dependencies datasource='federated.0xgdgp70jat98o16d7i4i0ra3uo3'>
-            <column caption='ServerIP Address' datatype='string' name='[ServerIP_Address]' role='dimension' type='nominal' />
-            <column caption='ServerIP Address Count' datatype='integer' name='[ServerIP_Address_Count]' role='measure' type='quantitative' />
+          <datasource-dependencies datasource='sqlproxy.0yh35tn07553wj1009b5w05d1ye9'>
+            <column aggregation='Count' caption='ServerIP Address' datatype='string' default-type='nominal' layered='true' name='[ServerIP_Address]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+            <column aggregation='Sum' caption='ServerIP Address Count' datatype='integer' default-type='quantitative' layered='true' name='[ServerIP_Address_Count]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
             <column-instance column='[ServerIP_Address]' derivation='None' name='[none:ServerIP_Address:nk]' pivot='key' type='nominal' />
-            <column-instance column='[ServerIP_Address_Count]' derivation='Sum' name='[sum:ServerIP_Address_Count:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[ServerIP_Address_Count]' derivation='Sum' name='[pcto:sum:ServerIP_Address_Count:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Table' type='PctTotal' />
+            </column-instance>
           </datasource-dependencies>
           <aggregation value='true' />
         </view>
@@ -116,25 +771,524 @@
             <mark class='Pie' />
             <mark-sizing mark-sizing-setting='marks-scaling-off' />
             <encodings>
-              <color column='[federated.0xgdgp70jat98o16d7i4i0ra3uo3].[none:ServerIP_Address:nk]' />
-              <wedge-size column='[federated.0xgdgp70jat98o16d7i4i0ra3uo3].[sum:ServerIP_Address_Count:qk]' />
-              <size column='[federated.0xgdgp70jat98o16d7i4i0ra3uo3].[sum:ServerIP_Address_Count:qk]' />
+              <color column='[sqlproxy.0yh35tn07553wj1009b5w05d1ye9].[none:ServerIP_Address:nk]' />
+              <wedge-size column='[sqlproxy.0yh35tn07553wj1009b5w05d1ye9].[pcto:sum:ServerIP_Address_Count:qk]' />
+              <size column='[sqlproxy.0yh35tn07553wj1009b5w05d1ye9].[pcto:sum:ServerIP_Address_Count:qk]' />
             </encodings>
             <style>
               <style-rule element='mark'>
-                <format attr='size' value='1.8350828886032104' />
+                <format attr='size' value='1.2193922996520996' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
               </style-rule>
             </style>
           </pane>
         </panes>
         <rows />
         <cols />
+        <percentages enabled='true' mode='table' />
       </table>
       <simple-id uuid='{D8D3A329-D944-4644-9C24-9F63908B7135}' />
     </worksheet>
+    <worksheet lock-updates='true' name='Users Monthly Activity'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='User Monthly Activity (SPMIT)' name='sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f' />
+            <datasource caption='User Monthly Activity 2' name='federated.0v9d1hk1xq81nd17qvk0g1d0wtin' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0v9d1hk1xq81nd17qvk0g1d0wtin'>
+            <column datatype='string' name='[UserName]' role='dimension' type='nominal' />
+            <column-instance column='[UserName]' derivation='None' name='[none:UserName:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <datasource-dependencies datasource='sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f'>
+            <column aggregation='Year' datatype='date' default-type='ordinal' layered='true' name='[LogRecorded]' pivot='key' role='dimension' type='ordinal' user-datatype='date' visual-totals='Default' />
+            <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[ProjectName]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+            <column aggregation='Sum' datatype='integer' default-type='quantitative' layered='true' name='[Project_Count]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+            <column-instance column='[LogRecorded]' derivation='Day' name='[dy:LogRecorded:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[LogRecorded]' derivation='Month' name='[mn:LogRecorded:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[ProjectName]' derivation='None' name='[none:ProjectName:nk]' pivot='key' type='nominal' />
+            <column-instance column='[LogRecorded]' derivation='Quarter' name='[qr:LogRecorded:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Project_Count]' derivation='Sum' name='[sum:Project_Count:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[LogRecorded]' derivation='Year' name='[yr:LogRecorded:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[dy:LogRecorded:ok]'>
+            <groupfilter function='level-members' level='[dy:LogRecorded:ok]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]'>
+            <groupfilter function='level-members' level='[none:ProjectName:nk]' />
+          </filter>
+          <slices>
+            <column>[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]</column>
+            <column>[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[dy:LogRecorded:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' />
+              <lod column='[federated.0v9d1hk1xq81nd17qvk0g1d0wtin].[none:UserName:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='size' value='1.0434806346893311' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[sum:Project_Count:qk]</rows>
+        <cols>([sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[yr:LogRecorded:ok] / ([sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[qr:LogRecorded:ok] / ([sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[mn:LogRecorded:ok] / [sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[dy:LogRecorded:ok])))</cols>
+      </table>
+      <simple-id uuid='{98FB1A5D-A8A4-427D-93C1-943985357287}' />
+    </worksheet>
+    <worksheet name='Users Monthly Activity-2'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='User Monthly Activity (SPMIT)' name='sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f' />
+          </datasources>
+          <datasource-dependencies datasource='sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f'>
+            <column aggregation='Year' datatype='date' default-type='ordinal' layered='true' name='[LogRecorded]' pivot='key' role='dimension' type='ordinal' user-datatype='date' visual-totals='Default' />
+            <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[ProjectName]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+            <column aggregation='Sum' datatype='integer' default-type='quantitative' layered='true' name='[Project_Count]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+            <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[UserName]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+            <column-instance column='[LogRecorded]' derivation='Day' name='[dy:LogRecorded:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[LogRecorded]' derivation='Month' name='[mn:LogRecorded:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[ProjectName]' derivation='None' name='[none:ProjectName:nk]' pivot='key' type='nominal' />
+            <column-instance column='[UserName]' derivation='None' name='[none:UserName:nk]' pivot='key' type='nominal' />
+            <column-instance column='[LogRecorded]' derivation='Quarter' name='[qr:LogRecorded:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Project_Count]' derivation='Sum' name='[sum:Project_Count:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[LogRecorded]' derivation='Year' name='[yr:LogRecorded:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' />
+              <lod column='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:UserName:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[sum:Project_Count:qk]</rows>
+        <cols>([sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[yr:LogRecorded:ok] / ([sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[qr:LogRecorded:ok] / ([sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[mn:LogRecorded:ok] / [sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[dy:LogRecorded:ok])))</cols>
+      </table>
+      <simple-id uuid='{BB82DE48-1CC8-417E-90DA-849D47A62FC5}' />
+    </worksheet>
   </worksheets>
-  <windows source-height='30'>
-    <window class='worksheet' maximized='true' name='Uniqe IP Address'>
+  <dashboards>
+    <dashboard name='Dashboard 2'>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <datasources>
+        <datasource name='Parameters' />
+        <datasource caption='User Monthly Activity (SPMIT)' name='sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f' />
+      </datasources>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='ServerId' datatype='integer' default-format='N' name='[Parameter 1]' param-domain-type='any' role='measure' type='quantitative' value='1'>
+          <calculation class='tableau' formula='1' />
+        </column>
+      </datasource-dependencies>
+      <datasource-dependencies datasource='sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f'>
+        <column aggregation='Year' datatype='date' default-type='ordinal' layered='true' name='[LogRecorded]' pivot='key' role='dimension' type='ordinal' user-datatype='date' visual-totals='Default' />
+        <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[ProjectName]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+        <column-instance column='[LogRecorded]' derivation='Day' name='[dy:LogRecorded:ok]' pivot='key' type='ordinal' />
+        <column-instance column='[ProjectName]' derivation='None' name='[none:ProjectName:nk]' pivot='key' type='nominal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='4' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98000' id='7' param='horz' type='layout-flow' w='98400' x='800' y='1000'>
+            <zone h='98000' id='5' type='layout-basic' w='82400' x='800' y='1000'>
+              <zone h='49000' id='3' name='Track User Activity' w='82400' x='800' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='49000' id='11' name='Users Monthly Activity' w='82400' x='800' y='50000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone fixed-size='160' h='98000' id='6' is-fixed='true' param='vert' type='layout-flow' w='16000' x='83200' y='1000'>
+              <zone h='15250' id='8' name='Track User Activity' pane-specification-id='0' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]' type='color' w='16000' x='83200' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='5250' id='9' name='Track User Activity' pane-specification-id='0' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[sum:User_Count_Percent:qk]' type='size' w='16000' x='83200' y='16250'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='6000' id='10' mode='type_in' param='[Parameters].[Parameter 1]' type='paramctrl' w='16000' x='83200' y='21500'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='6000' id='12' name='Users Monthly Activity' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[dy:LogRecorded:ok]' type='filter' w='16000' x='83200' y='27500'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='6000' id='13' name='Users Monthly Activity' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='filter' w='16000' x='83200' y='33500'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='2875' id='14' name='Users Monthly Activity' pane-specification-id='0' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='color' w='16000' x='83200' y='39500'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='1000' minheight='1000' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='18' type='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98000' id='19' param='vert' type='layout-flow' w='98400' x='800' y='1000'>
+                <zone fixed-size='280' h='49000' id='3' is-fixed='true' name='Track User Activity' w='82400' x='800' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='15250' id='8' name='Track User Activity' pane-specification-id='0' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]' type='color' w='16000' x='83200' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='5250' id='9' name='Track User Activity' pane-specification-id='0' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[sum:User_Count_Percent:qk]' type='size' w='16000' x='83200' y='16250'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='6000' id='10' mode='type_in' param='[Parameters].[Parameter 1]' type='paramctrl' w='16000' x='83200' y='21500'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='6000' id='12' mode='checkdropdown' name='Users Monthly Activity' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[dy:LogRecorded:ok]' type='filter' w='16000' x='83200' y='27500'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='6000' id='13' mode='checkdropdown' name='Users Monthly Activity' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='filter' w='16000' x='83200' y='33500'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='49000' id='11' is-fixed='true' name='Users Monthly Activity' w='82400' x='800' y='50000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='2875' id='14' name='Users Monthly Activity' pane-specification-id='0' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='color' w='16000' x='83200' y='39500'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{E23F3F64-CB17-4F57-BC83-ABC62F284B64}' />
+    </dashboard>
+    <dashboard name='User Commit View'>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <datasources>
+        <datasource name='Parameters' />
+        <datasource caption='User Monthly Activity (SPMIT)' name='sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f' />
+      </datasources>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='ServerId' datatype='integer' default-format='N' name='[Parameter 1]' param-domain-type='any' role='measure' type='quantitative' value='1'>
+          <calculation class='tableau' formula='1' />
+        </column>
+      </datasource-dependencies>
+      <datasource-dependencies datasource='sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f'>
+        <column aggregation='Year' datatype='date' default-type='ordinal' layered='true' name='[LogRecorded]' pivot='key' role='dimension' type='ordinal' user-datatype='date' visual-totals='Default' />
+        <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[ProjectName]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+        <column-instance column='[LogRecorded]' derivation='Day' name='[dy:LogRecorded:ok]' pivot='key' type='ordinal' />
+        <column-instance column='[ProjectName]' derivation='None' name='[none:ProjectName:nk]' pivot='key' type='nominal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='4' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98000' id='7' param='horz' type='layout-flow' w='98400' x='800' y='1000'>
+            <zone h='98000' id='5' type='layout-basic' w='82400' x='800' y='1000'>
+              <zone h='49000' id='12' name='Users Monthly Activity' w='82400' x='800' y='50000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='49000' id='17' name='Track User Activity' w='82400' x='800' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone fixed-size='160' h='98000' id='6' is-fixed='true' param='vert' type='layout-flow' w='16000' x='83200' y='1000'>
+              <zone h='6000' id='11' mode='type_in' param='[Parameters].[Parameter 1]' type='paramctrl' w='16000' x='83200' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='19833' id='13' name='Users Monthly Activity' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[dy:LogRecorded:ok]' type='filter' w='16000' x='83200' y='7000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='19833' id='14' name='Users Monthly Activity' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='filter' w='16000' x='83200' y='26833'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='19833' id='15' name='Users Monthly Activity' pane-specification-id='0' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='color' w='16000' x='83200' y='46666'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='15250' id='18' name='Track User Activity' pane-specification-id='0' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]' type='color' w='16000' x='83200' y='72499'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='5250' id='19' name='Track User Activity' pane-specification-id='0' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[sum:User_Count_Percent:qk]' type='size' w='16000' x='83200' y='87749'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='6001' id='20' name='Track User Activity' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]' type='highlighter' w='16000' x='83200' y='92999'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='1050' minheight='1050' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='31' type='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98000' id='32' param='vert' type='layout-flow' w='98400' x='800' y='1000'>
+                <zone h='6001' id='20' name='Track User Activity' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]' type='highlighter' w='16000' x='83200' y='92999'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='49000' id='17' is-fixed='true' name='Track User Activity' w='82400' x='800' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='15250' id='18' name='Track User Activity' pane-specification-id='0' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]' type='color' w='16000' x='83200' y='72499'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='5250' id='19' name='Track User Activity' pane-specification-id='0' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[sum:User_Count_Percent:qk]' type='size' w='16000' x='83200' y='87749'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='6000' id='11' mode='type_in' param='[Parameters].[Parameter 1]' type='paramctrl' w='16000' x='83200' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='19833' id='13' mode='checkdropdown' name='Users Monthly Activity' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[dy:LogRecorded:ok]' type='filter' w='16000' x='83200' y='7000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='19833' id='14' mode='checkdropdown' name='Users Monthly Activity' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='filter' w='16000' x='83200' y='26833'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='49000' id='12' is-fixed='true' name='Users Monthly Activity' w='82400' x='800' y='50000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='19833' id='15' name='Users Monthly Activity' pane-specification-id='0' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='color' w='16000' x='83200' y='46666'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{E537F909-0B89-4894-B2EE-03F23D9577C6}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='93'>
+    <window class='worksheet' name='Uniqe IP Address'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -156,139 +1310,916 @@
         </edge>
         <edge name='right'>
           <strip size='160'>
-            <card pane-specification-id='0' param='[federated.0xgdgp70jat98o16d7i4i0ra3uo3].[none:ServerIP_Address:nk]' type='color' />
-            <card pane-specification-id='0' param='[federated.0xgdgp70jat98o16d7i4i0ra3uo3].[sum:ServerIP_Address_Count:qk]' type='size' />
+            <card pane-specification-id='0' param='[sqlproxy.0yh35tn07553wj1009b5w05d1ye9].[none:ServerIP_Address:nk]' type='color' />
+            <card pane-specification-id='0' param='[sqlproxy.0yh35tn07553wj1009b5w05d1ye9].[pcto:sum:ServerIP_Address_Count:qk]' type='size' />
+            <card AVG='true' KURTOSIS='false' MAX='true' MEDIAN='true' MIN='true' QUART1='false' QUART3='false' SKEWNESS='false' STDEV='false' SUM='true' type='summary' />
+            <card mode='type_in' param='[Parameters].[Parameter 1]' type='parameter' />
+          </strip>
+        </edge>
+        <edge name='bottom'>
+          <strip size='96'>
+            <card type='caption' />
           </strip>
         </edge>
       </cards>
       <viewpoint>
-        <selection-collection>
-          <tuple-selection>
-            <tuple-reference>
-              <tuple-descriptor>
-                <pane-descriptor>
-                  <x-fields />
-                  <y-fields />
-                </pane-descriptor>
-                <columns>
-                  <field>[federated.0xgdgp70jat98o16d7i4i0ra3uo3].[none:ServerIP_Address:nk]</field>
-                  <field>[federated.0xgdgp70jat98o16d7i4i0ra3uo3].[sum:ServerIP_Address_Count:qk]</field>
-                </columns>
-              </tuple-descriptor>
-              <tuple>
-                <value>&quot;127.0.0.1&quot;</value>
-                <value>42051</value>
-              </tuple>
-            </tuple-reference>
-          </tuple-selection>
-        </selection-collection>
+        <zoom type='entire-view' />
         <highlight>
           <color-one-way>
-            <field>[federated.0xgdgp70jat98o16d7i4i0ra3uo3].[none:ServerIP_Address:nk]</field>
+            <field>[sqlproxy.0yh35tn07553wj1009b5w05d1ye9].[none:ServerIP_Address:nk]</field>
           </color-one-way>
         </highlight>
       </viewpoint>
       <simple-id uuid='{D469557F-4B4F-4663-BB22-15216B64363B}' />
     </window>
+    <window class='worksheet' name='Track User Activity'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]' type='color' />
+            <card pane-specification-id='0' param='[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[sum:User_Count_Percent:qk]' type='size' />
+            <card AVG='true' KURTOSIS='false' MAX='true' MEDIAN='true' MIN='true' QUART1='false' QUART3='false' SKEWNESS='false' STDEV='false' SUM='true' type='summary' />
+            <card mode='type_in' param='[Parameters].[Parameter 1]' type='parameter' />
+          </strip>
+        </edge>
+        <edge name='bottom'>
+          <strip size='96'>
+            <card type='caption' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]</field>
+            <field>[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[sum:User_Count:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{D41292D4-AD34-4823-93FB-CAD7DA97FE5C}' />
+    </window>
+    <window class='worksheet' name='Users Monthly Activity'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[dy:LogRecorded:ok]' type='filter' />
+            <card param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='filter' />
+            <card pane-specification-id='0' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='color' />
+            <card AVG='true' KURTOSIS='false' MAX='true' MEDIAN='true' MIN='true' QUART1='false' QUART3='false' SKEWNESS='false' STDEV='false' SUM='true' type='summary' />
+            <card mode='type_in' param='[Parameters].[Parameter 1]' type='parameter' />
+          </strip>
+        </edge>
+        <edge name='bottom'>
+          <strip size='96'>
+            <card type='caption' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.0v9d1hk1xq81nd17qvk0g1d0wtin].[none:UserName:nk]</field>
+            <field>[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{C67497A6-49CA-4866-9368-5747DA7DC2F6}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Users Monthly Activity-2'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]</field>
+            <field>[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:UserName:nk]</field>
+            <field>[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[yr:LogRecorded:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{B3385C0E-7841-4FB9-8282-80BB7A335B8C}' />
+    </window>
+    <window class='dashboard' name='User Commit View'>
+      <viewpoints>
+        <viewpoint name='Track User Activity'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Users Monthly Activity'>
+          <zoom type='entire-view' />
+          <highlight>
+            <color-one-way>
+              <field>[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]</field>
+            </color-one-way>
+          </highlight>
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <device-preview visible='true'>
+        <device name='Medium Desktop Monitor' type='Desktop' />
+      </device-preview>
+      <simple-id uuid='{09D3C556-3DE9-41F7-A739-641EA19273E5}' />
+    </window>
+    <window class='dashboard' name='Dashboard 2'>
+      <viewpoints>
+        <viewpoint name='Track User Activity'>
+          <zoom type='entire-view' />
+          <selection-collection>
+            <tuple-selection>
+              <tuple-reference>
+                <tuple-descriptor>
+                  <pane-descriptor>
+                    <x-fields />
+                    <y-fields />
+                  </pane-descriptor>
+                  <columns>
+                    <field>[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]</field>
+                    <field>[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[sum:User_Count_Percent:qk]</field>
+                  </columns>
+                </tuple-descriptor>
+                <tuple>
+                  <value>&quot;aaa&quot;</value>
+                  <value>45.707078201512999</value>
+                </tuple>
+              </tuple-reference>
+            </tuple-selection>
+          </selection-collection>
+          <highlight>
+            <color-one-way>
+              <field>[sqlproxy.0yt1bqq026y0n414jcxc91gninjs].[none:UserName:nk]</field>
+            </color-one-way>
+          </highlight>
+        </viewpoint>
+        <viewpoint name='Users Monthly Activity'>
+          <zoom type='entire-view' />
+          <highlight>
+            <color-one-way>
+              <field>[sqlproxy.1f86tvh1px4v5a15qzkme1f4hk1f].[none:ProjectName:nk]</field>
+            </color-one-way>
+          </highlight>
+        </viewpoint>
+      </viewpoints>
+      <active id='3' />
+      <simple-id uuid='{31049211-0FC5-4672-9AB7-2B75EFDDC59E}' />
+    </window>
   </windows>
   <thumbnails>
-    <thumbnail height='164' name='Uniqe IP Address' width='164'>
-      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
-      FESQBE3x/yFyJQVeDQroAAAAAElFTkSuQmCC
+    <thumbnail height='192' name='Dashboard 2' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='Track User Activity' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='Uniqe IP Address' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='User Commit View' width='192'>
+      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
+      8P8Hsc2rn763GWAAAAAASUVORK5CYII=
+    </thumbnail>
+    <thumbnail height='192' name='Users Monthly Activity' width='192'>
+      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
+      QmCC
+    </thumbnail>
+    <thumbnail height='192' name='Users Monthly Activity-2' width='192'>
+      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
     </thumbnail>
   </thumbnails>
 </workbook>

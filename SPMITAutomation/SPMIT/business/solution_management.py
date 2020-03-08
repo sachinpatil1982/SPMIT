@@ -15,6 +15,7 @@ log = common.log_managment.logging.getLogger('solution_management.Py')
 log.setLevel(log_erro_level)
 
 class Class_Solution_Management:
+
     def __init__(self, server_id, user_id):
         log.debug('{0}||{1}||Class_Solution_Management Initiatied' .format(server_id, user_id))
         self.server_id = server_id
@@ -31,7 +32,7 @@ class Class_Solution_Management:
         try:
             log.debug('{0}||{1}||Class_Solution_Management - fetch_server_logs_in_db - Started' .format(self.server_id, self.user_id))
             self.fetch_server_logs()
-            self.save_server_logs_db(server_log_file_path_db=self.server_log_file_path, filtered=0)
+            self.save_server_logs_db(server_log_file_path_db=self.server_log_file_path, filter_type='plain')
             self.get_server_logs_db()
             #print (self.server_logs)
             log.debug('{0}||{1}||Class_Solution_Management - fetch_server_logs_in_db - Completed' .format(self.server_id, self.user_id))
@@ -57,11 +58,11 @@ class Class_Solution_Management:
 #/***************************************************************************
 # Save text in Database
 #/***************************************************************************
-    def save_server_logs_db(self, server_log_file_path_db, filtered):
+    def save_server_logs_db(self, server_log_file_path_db, filter_type):
         try:
             log.debug('{0}||{1}||Class_Solution_Management - fetchsave_server_logs_db_server_logs - Started' .format(self.server_id, self.user_id))
             class_server_logs_sql_tranasctions_obj = data_service.server_logs_sql_transactions.Class_Common_Logs_Sql_Transactions(self.server_id, self.user_id)
-            class_server_logs_sql_tranasctions_obj.save_server_logs_in_db(server_log_file_path_db,filtered)
+            class_server_logs_sql_tranasctions_obj.save_server_logs_in_db(server_log_file_path_db,filter_type)
             log.debug('{0}||{1}||Class_Solution_Management - save_server_logs_db - Completed' .format(self.server_id, self.user_id))
         except Exception as e:
             error_msg = 'Critical exception raised while saving server logs - {0}' .format(str(e))
@@ -101,7 +102,7 @@ class Class_Solution_Management:
 
             cleansing_server_logs_split.to_csv(self.server_filtered_log_file_path, encoding='utf-8', index=False, header=False, sep='|' )
 
-            self.save_server_logs_db(server_log_file_path_db=self.server_filtered_log_file_path, filtered=1)
+            self.save_server_logs_db(server_log_file_path_db=self.server_filtered_log_file_path, filter_type='cleansing')
 
             # print (cleansing_server_logs_split)
             log.debug('{0}||{1}||Class_Solution_Management - cleansing_server_logs - Completed' .format(self.server_id, self.user_id))
@@ -141,31 +142,45 @@ class Class_Solution_Management:
         try:
             log.debug('{0}||{1}||Class_Solution_Management - cleansing_server_logs_filter_columns - Started' .format(self.server_id, self.user_id))
             
+            # Fetch (ServerIP + LogRecorded), EventSource, EventSubSource and EventDescription 
             cleansing_server_logs_split_1 = cleansing_server_logs_nan.ServerLogs.str.split("\"",expand=True)
+
+            # Fetch ServerIP & LogRecorded from above dataset-1
             cleansing_server_logs_split_2 = cleansing_server_logs_split_1[0].str.split("-",expand=True)
-            cleansing_server_logs_split_3 = cleansing_server_logs_split_2[0].str.split(" ",expand=True)
-            cleansing_server_logs_split_4 = cleansing_server_logs_split_1[2].str.split(" ",expand=True)
-            # cleansing_server_logs_split_2 = cleansing_server_logs_split_2.merge(cleansing_server_logs_split_1, left_on='Id', right_on='Id')
-            # cleansing_server_logs_split_3 = pd.concat([cleansing_server_logs_split_2, cleansing_server_logs_split_1], axis=1)
             
-            cleansing_server_logs_split_3[1] = cleansing_server_logs_split_2[2].str.strip()
-            cleansing_server_logs_split_3[2] = cleansing_server_logs_split_1[1].str.strip()
-            cleansing_server_logs_split_3[3] = cleansing_server_logs_split_4[1].str.strip()
-            cleansing_server_logs_split_3[4] = cleansing_server_logs_split_4[2].str.strip()
-            cleansing_server_logs_split_3[5] = cleansing_server_logs_split_1[3].str.strip()
-            cleansing_server_logs_split_3[6] = cleansing_server_logs_split_1[5].str.strip()  
+            # Fetch EventId & Event Category from above dataset-1
+            cleansing_server_logs_split_3 = cleansing_server_logs_split_1[2].str.split(" ",expand=True)
+            
+            # Fetch UserName from above dataset-1
+            cleansing_server_logs_split_4 = cleansing_server_logs_split_1[3].str.split("/",expand=True)
+            # print(cleansing_server_logs_split_4[3].str.strip())
+            # print(cleansing_server_logs_split_4[4].str.strip())
+                      
+            # cleansing_server_logs_split_2 = cleansing_server_logs_split_2.merge(cleansing_server_logs_split_1, left_on='Id', right_on='Id')
+            # cleansing_server_logs_split_final = pd.concat([cleansing_server_logs_split_2, cleansing_server_logs_split_1], axis=1)
+
+            # Prepare final dataset with help of dataset-1, dataset-2 & dataset-3
+            cleansing_server_logs_split_final = cleansing_server_logs_split_2[0].str.split(" ",expand=True)
+            cleansing_server_logs_split_final[1] = cleansing_server_logs_split_2[2].str.strip()
+            cleansing_server_logs_split_final[2] = cleansing_server_logs_split_1[1].str.strip()
+            cleansing_server_logs_split_final[3] = cleansing_server_logs_split_3[1].str.strip()
+            cleansing_server_logs_split_final[4] = cleansing_server_logs_split_3[2].str.strip()
+            cleansing_server_logs_split_final[5] = cleansing_server_logs_split_1[3].str.strip()
+            cleansing_server_logs_split_final[6] = cleansing_server_logs_split_4[3].str.strip()
+            cleansing_server_logs_split_final[7] = cleansing_server_logs_split_4[4].str.strip()
+            cleansing_server_logs_split_final[8] = cleansing_server_logs_split_1[5].str.strip()  
             # cleansing_server_logs_split_2[8] = str(cleansing_server_logs_split_1[6][7])            
 
-            pd.set_option('display.max_rows', cleansing_server_logs_split_3.shape[0]+1)
-            # for row in cleansing_server_logs_split_3.iterrows():
+            pd.set_option('display.max_rows', cleansing_server_logs_split_final.shape[0]+1)
+            # for row in cleansing_server_logs_split_final.iterrows():
             #     # A = str(row[1][7])
             #     # print('The value of ServerLogs: {}'.format(A))
             #     print(row)
-            # print(len(cleansing_server_logs_split_3.index))
-            # print(len(cleansing_server_logs_split_3.columns))
+            # print(len(cleansing_server_logs_split_final.index))
+            # print(len(cleansing_server_logs_split_final.columns))
             # print (cleansing_server_logs_split)
             log.debug('{0}||{1}||Class_Solution_Management - cleansing_server_logs_filter_columns - Completed' .format(self.server_id, self.user_id))
-            return cleansing_server_logs_split_3
+            return cleansing_server_logs_split_final
         except Exception as e:
             error_msg = 'Critical exception raised while cleansing server logs by filter redundant columns - {0}' .format(str(e))
             log.error('{0}||{1}||Class_Solution_Management - cleansing_server_logs_filter_columns - Exception || {2}' .format(self.server_id, self.user_id, error_msg))
